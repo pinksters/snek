@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://djvabqniyg3oa"]
+[gd_scene load_steps=12 format=3 uid="uid://djvabqniyg3oa"]
 
 [ext_resource type="Script" uid="uid://huqulox45np3" path="res://play_area/play_area.gd" id="1_jf821"]
 [ext_resource type="PackedScene" uid="uid://bpvvh7yqhnxmn" path="res://player/snake.tscn" id="2_bcrev"]
+[ext_resource type="Environment" uid="uid://bre58i5ooebau" path="res://world_environment.tres" id="3_uhuks"]
 
 [sub_resource type="Gradient" id="Gradient_uhuks"]
 interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.76666665, 0.94666666)
+offsets = PackedFloat32Array(0, 0.5, 0.94666666)
 colors = PackedColorArray(1, 1, 1, 1, 0.8732984, 0.8732984, 0.8732984, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_scshm"]
@@ -14,11 +15,24 @@ fill = 1
 fill_from = Vector2(0.5186916, 0.5046729)
 fill_to = Vector2(0.8364486, 0.17757009)
 
+[sub_resource type="Gradient" id="Gradient_scshm"]
+offsets = PackedFloat32Array(0, 0.4, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tjybb"]
+gradient = SubResource("Gradient_scshm")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bcrev"]
 particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(2500, 1500, 1)
 gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.79999995
+color = Color(18.892157, 18.892157, 18.892157, 1)
+color_ramp = SubResource("GradientTexture1D_tjybb")
+hue_variation_min = -0.76
+hue_variation_max = 0.60999995
 
 [sub_resource type="Gradient" id="Gradient_bcrev"]
 colors = PackedColorArray(0, 0.11623014, 0.27186528, 1, 0.40101734, 0.5201459, 1, 1)
@@ -42,13 +56,14 @@ bounds_topleft_marker = NodePath("BoundsTopLeftMarker")
 bounds_bottomright_marker = NodePath("BoundsBottomRightMarker")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.9, 0.9)
+scroll_scale = Vector2(0.3, 0.3)
 
 [node name="Stars" type="GPUParticles2D" parent="Parallax2D"]
 position = Vector2(106, 39)
 amount = 64
 texture = SubResource("GradientTexture2D_scshm")
 lifetime = 5.0
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_bcrev")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -103,5 +118,11 @@ position = Vector2(-1992, -1147)
 
 [node name="BoundsBottomRightMarker" type="Marker2D" parent="."]
 position = Vector2(2194, 1268)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_uhuks")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.7919991, 0.79199916, 0.7919991, 1)
 
 [editable path="Snake"]
