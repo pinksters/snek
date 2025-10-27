@@ -1,0 +1,107 @@
+[gd_scene load_steps=9 format=3 uid="uid://djvabqniyg3oa"]
+
+[ext_resource type="Script" uid="uid://huqulox45np3" path="res://play_area/play_area.gd" id="1_jf821"]
+[ext_resource type="PackedScene" uid="uid://bpvvh7yqhnxmn" path="res://player/snake.tscn" id="2_bcrev"]
+
+[sub_resource type="Gradient" id="Gradient_uhuks"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.76666665, 0.94666666)
+colors = PackedColorArray(1, 1, 1, 1, 0.8732984, 0.8732984, 0.8732984, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_scshm"]
+gradient = SubResource("Gradient_uhuks")
+fill = 1
+fill_from = Vector2(0.5186916, 0.5046729)
+fill_to = Vector2(0.8364486, 0.17757009)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bcrev"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2500, 1500, 1)
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_bcrev"]
+colors = PackedColorArray(0, 0.11623014, 0.27186528, 1, 0.40101734, 0.5201459, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uhuks"]
+noise_type = 5
+frequency = 0.0239
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_scshm"]
+width = 2048
+height = 2048
+noise = SubResource("FastNoiseLite_uhuks")
+color_ramp = SubResource("Gradient_bcrev")
+seamless = true
+
+[node name="PlayArea" type="Node2D" node_paths=PackedStringArray("bounds_topleft_marker", "bounds_bottomright_marker")]
+position = Vector2(13, 0)
+script = ExtResource("1_jf821")
+bounds_topleft_marker = NodePath("BoundsTopLeftMarker")
+bounds_bottomright_marker = NodePath("BoundsBottomRightMarker")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.9, 0.9)
+
+[node name="Stars" type="GPUParticles2D" parent="Parallax2D"]
+position = Vector2(106, 39)
+amount = 64
+texture = SubResource("GradientTexture2D_scshm")
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_bcrev")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+offset_left = -1406.0
+offset_top = -754.0
+offset_right = 2194.0
+offset_bottom = 1268.0
+texture = SubResource("NoiseTexture2D_scshm")
+expand_mode = 1
+
+[node name="Snake" parent="." instance=ExtResource("2_bcrev")]
+
+[node name="Camera2D" type="Camera2D" parent="Snake/SnakeHead" index="2"]
+zoom = Vector2(0.32, 0.32)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 30.0
+
+[node name="BoundaryVisuals" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="BoundaryVisuals"]
+offset_left = -4181.0
+offset_top = -4721.0
+offset_right = 2815.0
+offset_bottom = -1150.0
+color = Color(0.5882353, 0, 1, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="BoundaryVisuals"]
+offset_left = -8992.0
+offset_top = -4733.0
+offset_right = -1996.0
+offset_bottom = 3183.0
+color = Color(0.5882353, 0, 1, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="BoundaryVisuals"]
+offset_left = 2189.0
+offset_top = -4721.0
+offset_right = 9185.0
+offset_bottom = 3194.0
+color = Color(0.5882353, 0, 1, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="BoundaryVisuals"]
+offset_left = -2404.0
+offset_top = 1279.0
+offset_right = 2685.0
+offset_bottom = 3193.0
+color = Color(0.5882353, 0, 1, 1)
+
+[node name="BoundsTopLeftMarker" type="Marker2D" parent="."]
+position = Vector2(-1992, -1147)
+
+[node name="BoundsBottomRightMarker" type="Marker2D" parent="."]
+position = Vector2(2194, 1268)
+
+[editable path="Snake"]

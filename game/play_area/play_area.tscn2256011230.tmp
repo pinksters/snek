@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://djvabqniyg3oa"]
+
+[ext_resource type="Script" uid="uid://huqulox45np3" path="res://play_area/play_area.gd" id="1_jf821"]
+[ext_resource type="PackedScene" uid="uid://bpvvh7yqhnxmn" path="res://player/snake.tscn" id="2_bcrev"]
+
+[sub_resource type="Gradient" id="Gradient_bcrev"]
+colors = PackedColorArray(0, 0.11623014, 0.27186528, 1, 0.40101734, 0.5201459, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uhuks"]
+noise_type = 5
+frequency = 0.0239
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_scshm"]
+width = 2048
+height = 2048
+noise = SubResource("FastNoiseLite_uhuks")
+color_ramp = SubResource("Gradient_bcrev")
+seamless = true
+
+[node name="PlayArea" type="Node2D" node_paths=PackedStringArray("bounds_topleft_marker", "bounds_bottomright_marker")]
+position = Vector2(13, 0)
+script = ExtResource("1_jf821")
+bounds_topleft_marker = NodePath("BoundsTopLeftMarker")
+bounds_bottomright_marker = NodePath("BoundsBottomRightMarker")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -1406.0
+offset_top = -754.0
+offset_right = 2194.0
+offset_bottom = 1268.0
+texture = SubResource("NoiseTexture2D_scshm")
+expand_mode = 1
+
+[node name="Snake" parent="." instance=ExtResource("2_bcrev")]
+
+[node name="BoundsTopLeftMarker" type="Marker2D" parent="."]
+position = Vector2(-1406, -756)
+
+[node name="BoundsBottomRightMarker" type="Marker2D" parent="."]
+position = Vector2(2194, 1268)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(396, 260)
+zoom = Vector2(0.32, 0.32)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 30.0

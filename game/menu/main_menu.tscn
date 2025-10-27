@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckrtyir2cvkmu"]
+
+[ext_resource type="Script" uid="uid://bvervffoga1s5" path="res://menu/main_menu.gd" id="1_chmv6"]
+[ext_resource type="PackedScene" uid="uid://dlkwj8vqxmfne" path="res://addons/polkagodot/ui/asset_management_button/asset_management_button.tscn" id="2_o5w3e"]
+[ext_resource type="PackedScene" uid="uid://cfhdf0o6rdm6e" path="res://addons/polkagodot/ui/wallet_connect_button/wallet_connect_button.tscn" id="3_1x3cv"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_chmv6")
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 462.0
+offset_top = 368.0
+offset_right = 579.0
+offset_bottom = 415.0
+text = "PLAY"
+
+[node name="AssetManagementButton" parent="." instance=ExtResource("2_o5w3e")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -209.0
+offset_top = 62.0
+offset_right = -9.0
+offset_bottom = 102.0
+grow_horizontal = 0
+
+[node name="WalletConnectButton" parent="." instance=ExtResource("3_1x3cv")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -209.0
+offset_top = 9.0
+offset_right = -9.0
+offset_bottom = 49.0
+grow_horizontal = 0

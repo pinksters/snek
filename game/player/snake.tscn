@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://bpvvh7yqhnxmn"]
+
+[ext_resource type="Script" uid="uid://b841sekryecda" path="res://player/snake.gd" id="1_snake"]
+[ext_resource type="Script" uid="uid://b0j1db7gck8n1" path="res://player/snake_head.gd" id="2_head"]
+[ext_resource type="Texture2D" uid="uid://brsxa10bw4kk7" path="res://player/snake_head.png" id="3_texture"]
+[ext_resource type="Script" uid="uid://3cm0jh06xsud" path="res://player/snake_body.gd" id="4_body"]
+[ext_resource type="Shader" uid="uid://1kmewg4thb17" path="res://shaders/outline.gdshader" id="4_yvjr7"]
+
+[sub_resource type="Curve" id="Curve_yvjr7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7282609, 1), -1.4176563, -1.4176563, 0, 0, Vector2(1, 0), -13.093645, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_yvjr7"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.06521739, 0.78985506, 0.92753625)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6wktc"]
+gradient = SubResource("Gradient_yvjr7")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6wktc"]
+shader = ExtResource("4_yvjr7")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/sprite_tint = Color(1, 0.5568628, 0.9647059, 1)
+shader_parameter/outline_thickness = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_head"]
+radius = 16.0
+
+[node name="Snake" type="Node2D"]
+script = ExtResource("1_snake")
+
+[node name="SnakeBody" type="Line2D" parent="."]
+width_curve = SubResource("Curve_yvjr7")
+default_color = Color(0.9780378, 0.5058882, 0.9999996, 1)
+texture = SubResource("GradientTexture2D_6wktc")
+texture_mode = 2
+script = ExtResource("4_body")
+body_width = 85.0
+point_spacing = 30.0
+initial_length = 50
+
+[node name="SnakeHead" type="CharacterBody2D" parent="."]
+collision_mask = 2
+script = ExtResource("2_head")
+move_speed = 600.0
+
+[node name="Sprite2D" type="Sprite2D" parent="SnakeHead"]
+material = SubResource("ShaderMaterial_6wktc")
+scale = Vector2(0.5078125, 0.5078125)
+texture = ExtResource("3_texture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SnakeHead"]
+shape = SubResource("CircleShape2D_head")
