@@ -1,3 +1,3 @@
-[submodule "addons/polkagodot"]
+[submodule "game/addons/polkagodot"]
 	path = game/addons/polkagodot
 	url = https://github.com/pinksters/polkagodot-plugin.git
