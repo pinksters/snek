@@ -1,19 +1,28 @@
-[gd_scene load_steps=12 format=3 uid="uid://djvabqniyg3oa"]
+[gd_scene load_steps=20 format=3 uid="uid://djvabqniyg3oa"]
 
 [ext_resource type="Script" uid="uid://huqulox45np3" path="res://play_area/play_area.gd" id="1_jf821"]
 [ext_resource type="PackedScene" uid="uid://bpvvh7yqhnxmn" path="res://player/snake.tscn" id="2_bcrev"]
+[ext_resource type="Texture2D" uid="uid://bqqfooagyjmu2" path="res://assets/space_images/background.png" id="2_t52si"]
+[ext_resource type="Script" uid="uid://5aixtcvr1csc" path="res://utils/spinning_sprite.gd" id="3_8r5wk"]
+[ext_resource type="Texture2D" uid="uid://ckj01f3hv2udm" path="res://assets/space_images/galaxy-1.png" id="3_nfols"]
+[ext_resource type="Texture2D" uid="uid://vagd4umnukud" path="res://assets/particle_shapes/star_glowing.png" id="3_o27mm"]
+[ext_resource type="Texture2D" uid="uid://b1gjwj0ib1e45" path="res://assets/space_images/background-nebula.png" id="3_t52si"]
 [ext_resource type="Environment" uid="uid://bre58i5ooebau" path="res://world_environment.tres" id="3_uhuks"]
+[ext_resource type="Texture2D" uid="uid://cjbeudjhrxnk2" path="res://assets/space_images/nebula-2.png" id="4_i2nbb"]
+[ext_resource type="Texture2D" uid="uid://bmoiuuwgstos8" path="res://assets/space_images/nebula-1.png" id="5_i2nbb"]
+[ext_resource type="Texture2D" uid="uid://5gm4kku1hnaw" path="res://assets/space_images/galaxy-2.png" id="6_lese2"]
 
-[sub_resource type="Gradient" id="Gradient_uhuks"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.5, 0.94666666)
-colors = PackedColorArray(1, 1, 1, 1, 0.8732984, 0.8732984, 0.8732984, 1, 1, 1, 1, 0)
+[sub_resource type="Gradient" id="Gradient_lese2"]
+offsets = PackedFloat32Array(0, 0.5334346, 0.7948328)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_scshm"]
-gradient = SubResource("Gradient_uhuks")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t52si"]
+gradient = SubResource("Gradient_lese2")
+width = 512
+height = 512
 fill = 1
-fill_from = Vector2(0.5186916, 0.5046729)
-fill_to = Vector2(0.8364486, 0.17757009)
+fill_from = Vector2(0.47435898, 0.5)
+fill_to = Vector2(0.9017094, 0.94017094)
 
 [sub_resource type="Gradient" id="Gradient_scshm"]
 offsets = PackedFloat32Array(0, 0.4, 1)
@@ -26,13 +35,15 @@ gradient = SubResource("Gradient_scshm")
 particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(2500, 1500, 1)
+angle_min = -720.0
+angle_max = 720.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.099999994
-scale_max = 0.79999995
-color = Color(18.892157, 18.892157, 18.892157, 1)
+scale_max = 0.39999998
+color = Color(18.892157, 0.8104105, 18.751299, 1)
 color_ramp = SubResource("GradientTexture1D_tjybb")
-hue_variation_min = -0.76
-hue_variation_max = 0.60999995
+hue_variation_min = -0.49
+hue_variation_max = 0.26999998
 
 [sub_resource type="Gradient" id="Gradient_bcrev"]
 colors = PackedColorArray(0, 0.11623014, 0.27186528, 1, 0.40101734, 0.5201459, 1, 1)
@@ -55,16 +66,195 @@ script = ExtResource("1_jf821")
 bounds_topleft_marker = NodePath("BoundsTopLeftMarker")
 bounds_bottomright_marker = NodePath("BoundsBottomRightMarker")
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
+[node name="StationaryBackground" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.02, 0.02)
+
+[node name="StationaryBackgroundImage" type="Sprite2D" parent="StationaryBackground"]
+modulate = Color(1, 1, 1, 0.7882353)
+position = Vector2(461.00003, 311)
+scale = Vector2(3.2699766, 3.2699761)
+texture = ExtResource("2_t52si")
+
+[node name="ParallaxBackground" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 0.2)
+scroll_offset = Vector2(-5, -5)
+
+[node name="StationaryBackgroundImage" type="Sprite2D" parent="ParallaxBackground"]
+modulate = Color(1, 1, 1, 0.32156864)
+position = Vector2(421.00003, 124.000015)
+scale = Vector2(4.800028, 4.800027)
+texture = ExtResource("3_t52si")
+
+[node name="Galaxies1" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.08, 0.08)
+
+[node name="Squish" type="Node2D" parent="Galaxies1"]
+position = Vector2(-720.00006, 850)
+rotation = 1.0471976
+scale = Vector2(1, 0.485)
+
+[node name="Sprite2D" type="Sprite2D" parent="Galaxies1/Squish"]
+modulate = Color(0.22745098, 1, 0.41568628, 1)
+rotation = -5872.038
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_nfols")
+script = ExtResource("3_8r5wk")
+spin_speed = -0.8
+
+[node name="Squish3" type="Node2D" parent="Galaxies1"]
+position = Vector2(1012, -689)
+rotation = -0.5235988
+scale = Vector2(1, 0.485)
+
+[node name="Sprite2D" type="Sprite2D" parent="Galaxies1/Squish3"]
+modulate = Color(0.9971116, 0.5187524, 1, 1)
+position = Vector2(-2.6340332, 13.530273)
+rotation = -5871.1494
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_nfols")
+script = ExtResource("3_8r5wk")
+spin_speed = -0.8
+
+[node name="Squish4" type="Node2D" parent="Galaxies1"]
+position = Vector2(172, 575)
+rotation = -0.5235988
+scale = Vector2(1, 0.485)
+
+[node name="Sprite2D" type="Sprite2D" parent="Galaxies1/Squish4"]
+modulate = Color(1, 0.5686275, 0.28235295, 1)
+rotation = -5872.038
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_nfols")
+script = ExtResource("3_8r5wk")
+spin_speed = -0.8
+
+[node name="Squish5" type="Node2D" parent="Galaxies1"]
+position = Vector2(1646.9999, 399.0001)
+rotation = -1.3089969
+scale = Vector2(1, 0.485)
+
+[node name="Sprite2D" type="Sprite2D" parent="Galaxies1/Squish5"]
+modulate = Color(0.050980393, 1, 1, 1)
+rotation = -5872.038
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_nfols")
+script = ExtResource("3_8r5wk")
+spin_speed = -0.8
+
+[node name="Galaxies2" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.15, 0.15)
+
+[node name="Squish2" type="Node2D" parent="Galaxies2"]
+position = Vector2(-1474.9999, 677)
+rotation = 0.5235988
+scale = Vector2(1, 0.485)
+
+[node name="Sprite2D" type="Sprite2D" parent="Galaxies2/Squish2"]
+position = Vector2(4.392189, -33.798355)
+rotation = -5314.041
+scale = Vector2(1.5833981, 1.5833981)
+texture = ExtResource("3_nfols")
+script = ExtResource("3_8r5wk")
+spin_speed = -0.3
+
+[node name="Squish5" type="Node2D" parent="Galaxies2"]
+position = Vector2(-717, -529)
+rotation = -0.5235988
+scale = Vector2(1, 0.485)
+
+[node name="ClipMask" type="Sprite2D" parent="Galaxies2/Squish5"]
+clip_children = 1
+position = Vector2(-6.3302, 1.9879456)
+rotation = -840.7446
+scale = Vector2(1.3037918, 1.3682809)
+texture = SubResource("GradientTexture2D_t52si")
+script = ExtResource("3_8r5wk")
+spin_speed = 0.3
+
+[node name="Sprite" type="Sprite2D" parent="Galaxies2/Squish5/ClipMask"]
+rotation = 3.160025
+scale = Vector2(1.0000001, 1.0000001)
+texture = ExtResource("6_lese2")
+
+[node name="Squish" type="Node2D" parent="Galaxies2"]
+position = Vector2(1984, -465.99997)
+rotation = -3.1415927
+scale = Vector2(1, 0.485)
+
+[node name="Sprite2D" type="Sprite2D" parent="Galaxies2/Squish"]
+modulate = Color(0, 0.90518683, 0.7193977, 1)
+position = Vector2(217.71956, 786.27637)
+rotation = -5314.7344
+scale = Vector2(0.9342987, 0.9342987)
+texture = ExtResource("3_nfols")
+script = ExtResource("3_8r5wk")
+spin_speed = -0.3
+
+[node name="Squish4" type="Node2D" parent="Galaxies2"]
+position = Vector2(620.00006, 194.99994)
+rotation = -1.8325958
+scale = Vector2(1, 0.485)
+
+[node name="Sprite2D" type="Sprite2D" parent="Galaxies2/Squish4"]
+modulate = Color(1, 0.4862745, 1, 1)
+position = Vector2(-214.91235, 148.09048)
+rotation = -5313.8564
+scale = Vector2(0.8372296, 0.8372296)
+texture = ExtResource("3_nfols")
+script = ExtResource("3_8r5wk")
+spin_speed = -0.3
+
+[node name="Stars" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.3, 0.3)
 
-[node name="Stars" type="GPUParticles2D" parent="Parallax2D"]
+[node name="StarParticles" type="GPUParticles2D" parent="Stars"]
 position = Vector2(106, 39)
 amount = 64
-texture = SubResource("GradientTexture2D_scshm")
+texture = ExtResource("3_o27mm")
 lifetime = 5.0
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_bcrev")
+
+[node name="Stars2" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.55, 0.55)
+
+[node name="StarParticles" type="GPUParticles2D" parent="Stars2"]
+position = Vector2(106, 39)
+amount = 64
+texture = ExtResource("3_o27mm")
+lifetime = 5.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_bcrev")
+
+[node name="Stars3" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.8, 0.8)
+
+[node name="StarParticles" type="GPUParticles2D" parent="Stars3"]
+position = Vector2(106, 39)
+amount = 64
+texture = ExtResource("3_o27mm")
+lifetime = 5.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_bcrev")
+
+[node name="ForegroundNebula" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1.5, 1.5)
+
+[node name="Nebula1" type="Sprite2D" parent="ForegroundNebula"]
+modulate = Color(1, 1, 1, 0.28627452)
+position = Vector2(-1624, -500.00003)
+scale = Vector2(5.6948247, 5.6948247)
+texture = ExtResource("5_i2nbb")
+
+[node name="ForegroundNebula2" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1.8, 1.8)
+scroll_offset = Vector2(2247, 533)
+
+[node name="Nebula2" type="Sprite2D" parent="ForegroundNebula2"]
+modulate = Color(1, 1, 1, 0.28627452)
+position = Vector2(816, 989)
+scale = Vector2(5.6948247, 5.6948247)
+texture = ExtResource("4_i2nbb")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
