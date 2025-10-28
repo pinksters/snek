@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://dnif7v7tprb6p"]
+
+[ext_resource type="Texture2D" uid="uid://3kuiqrr1la3w" path="res://player/thruster_attachment/thruster.png" id="1_hueg2"]
+[ext_resource type="Script" uid="uid://dwnj1apqctrhk" path="res://player/thruster_attachment/thruster_attachment.gd" id="1_m0pyi"]
+[ext_resource type="Texture2D" uid="uid://covy5wj1afj3g" path="res://player/thruster_attachment/bracket_bottom.png" id="2_m0pyi"]
+[ext_resource type="Texture2D" uid="uid://bgnx4lqwexuva" path="res://player/thruster_attachment/bracket_top.png" id="3_adaly"]
+
+[sub_resource type="Gradient" id="Gradient_m0pyi"]
+colors = PackedColorArray(0.8612778, 0.7236339, 1, 1, 0.93340725, 0.19123784, 0.9999998, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_adaly"]
+gradient = SubResource("Gradient_m0pyi")
+
+[sub_resource type="Curve" id="Curve_tpwpf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.3531138, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ggfsj"]
+curve = SubResource("Curve_tpwpf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m0pyi"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 30.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 500.0
+initial_velocity_max = 800.0
+gravity = Vector3(0, 0, 0)
+scale_min = 10.0
+scale_max = 30.0
+scale_curve = SubResource("CurveTexture_ggfsj")
+color_ramp = SubResource("GradientTexture1D_adaly")
+
+[node name="ThrusterAttachment" type="Node2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_m0pyi")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-95, 66.66669)
+amount = 32
+lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_m0pyi")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(98.333374, 66.66669)
+amount = 32
+lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_m0pyi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Thruster" type="Sprite2D" parent="."]
+modulate = Color(1, 0.5568628, 1, 1)
+position = Vector2(98, 12)
+texture = ExtResource("1_hueg2")
+
+[node name="Thruster2" type="Sprite2D" parent="."]
+modulate = Color(1, 0.5568628, 1, 1)
+position = Vector2(-97, 12)
+texture = ExtResource("1_hueg2")
+
+[node name="BracketBottom" type="Sprite2D" parent="."]
+modulate = Color(0.18359044, 0.18359044, 0.18359044, 1)
+z_index = -10
+position = Vector2(0, -1)
+texture = ExtResource("2_m0pyi")
+
+[node name="BracketTop" type="Sprite2D" parent="."]
+modulate = Color(0.32544088, 0.3254409, 0.32544088, 1)
+position = Vector2(1, -12)
+texture = ExtResource("3_adaly")

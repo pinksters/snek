@@ -1,12 +1,16 @@
 extends Line2D
 class_name SnakeBody
 
+const FIRST_THRUSTER_OFFSET: int = 5
+const THRUSTER_SPACING: int = 15
+
 @export var body_width: float = 40.0
 @export var point_spacing: float = 5.0
 @export var initial_length: int = 20
 @export var routing_padding: float = 400.0
 
 var body_points: Array[BodyPoint] = []
+var thrusters: Array[Node2D] = []
 var distance_since_last_point: float = 0.0
 
 
@@ -61,17 +65,23 @@ func _update_visual() -> void:
 
 	for i in range(body_points.size()):
 		var point = body_points[i]
+		var prev_point = point
+		var next_point = point
+		if i < body_points.size() - 1:
+			prev_point = body_points[i + 1]
+		if i > 0:
+			next_point = body_points[i - 1]
 
 		# Always add the current point
 		add_point(point.position)
 		
+		# Place rocket thrusters along the snek's body
+		_update_thrusters_for_point(i, point.position, next_point.position, point.connection_type)
+		
 		# Handle teleport connections by routing around the playable area
-		if i < body_points.size() - 1 and point.connection_type == BodyPoint.ConnectionType.TELEPORT:
-			var prev_point = body_points[i + 1]
-
+		if point.connection_type == BodyPoint.ConnectionType.TELEPORT:
 			var dx: float = point.position.x - prev_point.position.x
 			var dy: float = point.position.y - prev_point.position.y
-			print("routing between ", point.position, " and ", prev_point.position)
 
 			# Horizontal teleport (left/right wrap)
 			if abs(dx) > abs(dy):
@@ -99,6 +109,28 @@ func _update_visual() -> void:
 					add_point(Vector2(bounds_topleft.x - routing_padding, bounds_topleft.y - routing_padding))
 					add_point(Vector2(bounds_topleft.x - routing_padding, bounds_bottomright.y + routing_padding))
 					add_point(Vector2(prev_point.position.x, bounds_bottomright.y + routing_padding))
+
+
+func _update_thrusters_for_point(point_idx: int, point_position: Vector2, next_point_position: Vector2, is_teleport: bool) -> void:
+	if (point_idx < FIRST_THRUSTER_OFFSET) || ((point_idx - FIRST_THRUSTER_OFFSET) % THRUSTER_SPACING != 0):
+		return
+	
+	# Spawn new thrusters until there's enough for our snek's length
+	var thruster_idx: int = (point_idx - FIRST_THRUSTER_OFFSET) / THRUSTER_SPACING
+	while thrusters.size() < (thruster_idx + 1):
+		var new_thruster = preload("res://player/thruster_attachment/thruster_attachment.tscn").instantiate()
+		add_child(new_thruster)
+		thrusters.append(new_thruster)
+	
+	# The thruster will internally interpolate its position and rotation
+	var thruster: Node2D = thrusters[thruster_idx]
+	thruster.target_position = point_position
+	thruster.target_rotation = Vector2.DOWN.angle_to(point_position - next_point_position)
+	
+	# If this point has teleported, the thruster should also snap to it immediately
+	if is_teleport:
+		thruster.position = thruster.target_position
+		thruster.rotation = thruster.target_rotation
 
 
 ## Check collisions between the head and the body by checking the distance to each of the points.

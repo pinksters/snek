@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://djvabqniyg3oa"]
+[gd_scene load_steps=19 format=3 uid="uid://djvabqniyg3oa"]
 
 [ext_resource type="Script" uid="uid://huqulox45np3" path="res://play_area/play_area.gd" id="1_jf821"]
 [ext_resource type="PackedScene" uid="uid://bpvvh7yqhnxmn" path="res://player/snake.tscn" id="2_bcrev"]
@@ -45,20 +45,13 @@ color_ramp = SubResource("GradientTexture1D_tjybb")
 hue_variation_min = -0.49
 hue_variation_max = 0.26999998
 
-[sub_resource type="Gradient" id="Gradient_bcrev"]
-colors = PackedColorArray(0, 0.11623014, 0.27186528, 1, 0.40101734, 0.5201459, 1, 1)
+[sub_resource type="Gradient" id="Gradient_t52si"]
+offsets = PackedFloat32Array(0, 0.47457626, 0.7627119)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0.23986965, 0.00044455967, 0.36874145, 0)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_uhuks"]
-noise_type = 5
-frequency = 0.0239
-fractal_type = 2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_scshm"]
-width = 2048
-height = 2048
-noise = SubResource("FastNoiseLite_uhuks")
-color_ramp = SubResource("Gradient_bcrev")
-seamless = true
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l61fl"]
+gradient = SubResource("Gradient_t52si")
+fill_to = Vector2(0, 1)
 
 [node name="PlayArea" type="Node2D" node_paths=PackedStringArray("bounds_topleft_marker", "bounds_bottomright_marker")]
 position = Vector2(13, 0)
@@ -95,7 +88,7 @@ scale = Vector2(1, 0.485)
 
 [node name="Sprite2D" type="Sprite2D" parent="Galaxies1/Squish"]
 modulate = Color(0.22745098, 1, 0.41568628, 1)
-rotation = -5872.038
+rotation = -8552.289
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_nfols")
 script = ExtResource("3_8r5wk")
@@ -109,7 +102,7 @@ scale = Vector2(1, 0.485)
 [node name="Sprite2D" type="Sprite2D" parent="Galaxies1/Squish3"]
 modulate = Color(0.9971116, 0.5187524, 1, 1)
 position = Vector2(-2.6340332, 13.530273)
-rotation = -5871.1494
+rotation = -8551.368
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_nfols")
 script = ExtResource("3_8r5wk")
@@ -122,7 +115,7 @@ scale = Vector2(1, 0.485)
 
 [node name="Sprite2D" type="Sprite2D" parent="Galaxies1/Squish4"]
 modulate = Color(1, 0.5686275, 0.28235295, 1)
-rotation = -5872.038
+rotation = -8552.289
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_nfols")
 script = ExtResource("3_8r5wk")
@@ -135,7 +128,7 @@ scale = Vector2(1, 0.485)
 
 [node name="Sprite2D" type="Sprite2D" parent="Galaxies1/Squish5"]
 modulate = Color(0.050980393, 1, 1, 1)
-rotation = -5872.038
+rotation = -8552.289
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_nfols")
 script = ExtResource("3_8r5wk")
@@ -151,7 +144,7 @@ scale = Vector2(1, 0.485)
 
 [node name="Sprite2D" type="Sprite2D" parent="Galaxies2/Squish2"]
 position = Vector2(4.392189, -33.798355)
-rotation = -5314.041
+rotation = -6301.961
 scale = Vector2(1.5833981, 1.5833981)
 texture = ExtResource("3_nfols")
 script = ExtResource("3_8r5wk")
@@ -165,7 +158,7 @@ scale = Vector2(1, 0.485)
 [node name="ClipMask" type="Sprite2D" parent="Galaxies2/Squish5"]
 clip_children = 1
 position = Vector2(-6.3302, 1.9879456)
-rotation = -840.7446
+rotation = 171.56181
 scale = Vector2(1.3037918, 1.3682809)
 texture = SubResource("GradientTexture2D_t52si")
 script = ExtResource("3_8r5wk")
@@ -184,7 +177,7 @@ scale = Vector2(1, 0.485)
 [node name="Sprite2D" type="Sprite2D" parent="Galaxies2/Squish"]
 modulate = Color(0, 0.90518683, 0.7193977, 1)
 position = Vector2(217.71956, 786.27637)
-rotation = -5314.7344
+rotation = -6302.6543
 scale = Vector2(0.9342987, 0.9342987)
 texture = ExtResource("3_nfols")
 script = ExtResource("3_8r5wk")
@@ -198,7 +191,7 @@ scale = Vector2(1, 0.485)
 [node name="Sprite2D" type="Sprite2D" parent="Galaxies2/Squish4"]
 modulate = Color(1, 0.4862745, 1, 1)
 position = Vector2(-214.91235, 148.09048)
-rotation = -5313.8564
+rotation = -6301.7764
 scale = Vector2(0.8372296, 0.8372296)
 texture = ExtResource("3_nfols")
 script = ExtResource("3_8r5wk")
@@ -256,15 +249,6 @@ position = Vector2(816, 989)
 scale = Vector2(5.6948247, 5.6948247)
 texture = ExtResource("4_i2nbb")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-offset_left = -1406.0
-offset_top = -754.0
-offset_right = 2194.0
-offset_bottom = 1268.0
-texture = SubResource("NoiseTexture2D_scshm")
-expand_mode = 1
-
 [node name="Snake" parent="." instance=ExtResource("2_bcrev")]
 
 [node name="Camera2D" type="Camera2D" parent="Snake/SnakeHead" index="2"]
@@ -275,33 +259,49 @@ position_smoothing_speed = 30.0
 
 [node name="BoundaryVisuals" type="Node2D" parent="."]
 
+[node name="Line2D" type="Line2D" parent="BoundaryVisuals"]
+points = PackedVector2Array(-1992, -1147, 2194, -1147, 2194, 1268, -1992, 1268)
+closed = true
+width = 991.725
+texture = SubResource("GradientTexture2D_l61fl")
+texture_mode = 2
+metadata/_edit_lock_ = true
+
 [node name="ColorRect" type="ColorRect" parent="BoundaryVisuals"]
-offset_left = -4181.0
-offset_top = -4721.0
-offset_right = 2815.0
-offset_bottom = -1150.0
-color = Color(0.5882353, 0, 1, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="BoundaryVisuals"]
-offset_left = -8992.0
-offset_top = -4733.0
-offset_right = -1996.0
-offset_bottom = 3183.0
-color = Color(0.5882353, 0, 1, 1)
-
-[node name="ColorRect4" type="ColorRect" parent="BoundaryVisuals"]
-offset_left = 2189.0
-offset_top = -4721.0
-offset_right = 9185.0
-offset_bottom = 3194.0
-color = Color(0.5882353, 0, 1, 1)
+offset_left = 2553.0
+offset_top = -3340.0
+offset_right = 7929.0
+offset_bottom = 3226.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="ColorRect2" type="ColorRect" parent="BoundaryVisuals"]
-offset_left = -2404.0
-offset_top = 1279.0
-offset_right = 2685.0
-offset_bottom = 3193.0
-color = Color(0.5882353, 0, 1, 1)
+offset_left = -7678.0
+offset_top = -3071.0
+offset_right = -2302.0
+offset_bottom = 3495.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="BoundaryVisuals"]
+offset_left = -2630.0
+offset_top = 1555.0
+offset_right = 2746.0
+offset_bottom = 8121.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect4" type="ColorRect" parent="BoundaryVisuals"]
+offset_left = -2534.0
+offset_top = -7965.0
+offset_right = 2842.0
+offset_bottom = -1399.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="BoundsTopLeftMarker" type="Marker2D" parent="."]
 position = Vector2(-1992, -1147)
