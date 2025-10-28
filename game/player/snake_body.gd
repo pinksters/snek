@@ -79,7 +79,7 @@ func _update_visual() -> void:
 		_update_thrusters_for_point(i, point.position, next_point.position, point.connection_type)
 		
 		# Handle teleport connections by routing around the playable area
-		if point.connection_type == BodyPoint.ConnectionType.TELEPORT:
+		if point.connection_type == BodyPoint.ConnectionType.TELEPORT && i < body_points.size() - 1:
 			var dx: float = point.position.x - prev_point.position.x
 			var dy: float = point.position.y - prev_point.position.y
 

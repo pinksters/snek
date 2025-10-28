@@ -88,7 +88,7 @@ scale = Vector2(1, 0.485)
 
 [node name="Sprite2D" type="Sprite2D" parent="Galaxies1/Squish"]
 modulate = Color(0.22745098, 1, 0.41568628, 1)
-rotation = -8552.289
+rotation = -9023.873
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_nfols")
 script = ExtResource("3_8r5wk")
@@ -102,7 +102,7 @@ scale = Vector2(1, 0.485)
 [node name="Sprite2D" type="Sprite2D" parent="Galaxies1/Squish3"]
 modulate = Color(0.9971116, 0.5187524, 1, 1)
 position = Vector2(-2.6340332, 13.530273)
-rotation = -8551.368
+rotation = -9022.952
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_nfols")
 script = ExtResource("3_8r5wk")
@@ -115,7 +115,7 @@ scale = Vector2(1, 0.485)
 
 [node name="Sprite2D" type="Sprite2D" parent="Galaxies1/Squish4"]
 modulate = Color(1, 0.5686275, 0.28235295, 1)
-rotation = -8552.289
+rotation = -9023.873
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_nfols")
 script = ExtResource("3_8r5wk")
@@ -128,7 +128,7 @@ scale = Vector2(1, 0.485)
 
 [node name="Sprite2D" type="Sprite2D" parent="Galaxies1/Squish5"]
 modulate = Color(0.050980393, 1, 1, 1)
-rotation = -8552.289
+rotation = -9023.873
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_nfols")
 script = ExtResource("3_8r5wk")
@@ -144,7 +144,7 @@ scale = Vector2(1, 0.485)
 
 [node name="Sprite2D" type="Sprite2D" parent="Galaxies2/Squish2"]
 position = Vector2(4.392189, -33.798355)
-rotation = -6301.961
+rotation = -6470.384
 scale = Vector2(1.5833981, 1.5833981)
 texture = ExtResource("3_nfols")
 script = ExtResource("3_8r5wk")
@@ -158,7 +158,7 @@ scale = Vector2(1, 0.485)
 [node name="ClipMask" type="Sprite2D" parent="Galaxies2/Squish5"]
 clip_children = 1
 position = Vector2(-6.3302, 1.9879456)
-rotation = 171.56181
+rotation = 344.19522
 scale = Vector2(1.3037918, 1.3682809)
 texture = SubResource("GradientTexture2D_t52si")
 script = ExtResource("3_8r5wk")
@@ -177,7 +177,7 @@ scale = Vector2(1, 0.485)
 [node name="Sprite2D" type="Sprite2D" parent="Galaxies2/Squish"]
 modulate = Color(0, 0.90518683, 0.7193977, 1)
 position = Vector2(217.71956, 786.27637)
-rotation = -6302.6543
+rotation = -6471.077
 scale = Vector2(0.9342987, 0.9342987)
 texture = ExtResource("3_nfols")
 script = ExtResource("3_8r5wk")
@@ -191,7 +191,7 @@ scale = Vector2(1, 0.485)
 [node name="Sprite2D" type="Sprite2D" parent="Galaxies2/Squish4"]
 modulate = Color(1, 0.4862745, 1, 1)
 position = Vector2(-214.91235, 148.09048)
-rotation = -6301.7764
+rotation = -6470.199
 scale = Vector2(0.8372296, 0.8372296)
 texture = ExtResource("3_nfols")
 script = ExtResource("3_8r5wk")
