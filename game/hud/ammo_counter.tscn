@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7wbwdxn8syf3"]
+
+[ext_resource type="Script" uid="uid://djjn7n4p7aisg" path="res://hud/ammo_counter.gd" id="1_1"]
+[ext_resource type="FontVariation" uid="uid://hvjn3dv84xvx" path="res://addons/polkagodot/assets/fonts/unbounded_light.tres" id="2_8vvro"]
+[ext_resource type="PackedScene" path="res://hud/ammo_indicator.tscn" id="3_l7dbp"]
+
+[node name="AmmoCounter" type="Control"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_1")
+
+[node name="AmmoLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_top = -37.0
+offset_right = 32.0
+offset_bottom = -14.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.3764706, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_8vvro")
+text = "Ammo"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -218.0
+offset_right = 218.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="AmmoIndicator" parent="HBoxContainer" instance=ExtResource("3_l7dbp")]
+layout_mode = 2
+
+[node name="AmmoIndicator2" parent="HBoxContainer" instance=ExtResource("3_l7dbp")]
+layout_mode = 2
+
+[node name="AmmoIndicator3" parent="HBoxContainer" instance=ExtResource("3_l7dbp")]
+layout_mode = 2

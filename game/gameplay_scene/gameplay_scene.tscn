@@ -1,12 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://u544h0pc3idv"]
 
 [ext_resource type="PackedScene" uid="uid://djvabqniyg3oa" path="res://gameplay_scene/play_area.tscn" id="1_nt05s"]
-[ext_resource type="PackedScene" uid="uid://ccd56btd2vu5k" path="res://hud/life_counter.tscn" id="2_cu3m7"]
+[ext_resource type="PackedScene" uid="uid://hquvtue81ek5" path="res://hud/hud.tscn" id="2_cu3m7"]
 
 [node name="GameplayScene" type="Node"]
 
 [node name="PlayArea" parent="." instance=ExtResource("1_nt05s")]
 
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="LifeCounter" parent="HUD" instance=ExtResource("2_cu3m7")]
+[node name="HUD" parent="." instance=ExtResource("2_cu3m7")]
