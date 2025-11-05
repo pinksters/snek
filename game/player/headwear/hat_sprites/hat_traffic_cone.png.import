@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brsxa10bw4kk7"
-path="res://.godot/imported/snake_head.png-8c8045872b6b6d80422e639cb1bcf57f.ctex"
+uid="uid://biayxsoqebuas"
+path="res://.godot/imported/hat_traffic_cone.png-fafb1b31299e2877d6459b1d5965cdbe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/snake_head.png"
-dest_files=["res://.godot/imported/snake_head.png-8c8045872b6b6d80422e639cb1bcf57f.ctex"]
+source_file="res://player/headwear/hat_sprites/hat_traffic_cone.png"
+dest_files=["res://.godot/imported/hat_traffic_cone.png-fafb1b31299e2877d6459b1d5965cdbe.ctex"]
 
 [params]
 

@@ -64,19 +64,25 @@ scroll_scale = Vector2(0.02, 0.02)
 
 [node name="StationaryBackgroundImage" type="Sprite2D" parent="StationaryBackground"]
 modulate = Color(1, 1, 1, 0.7882353)
-position = Vector2(461.00003, 311)
+texture_repeat = 3
+position = Vector2(1590.0001, 13.000008)
 scale = Vector2(3.2699766, 3.2699761)
 texture = ExtResource("2_t52si")
+region_enabled = true
+region_rect = Rect2(0, 0, 2784, 1128)
 
-[node name="ParallaxBackground" type="Parallax2D" parent="."]
+[node name="ParallaxNebula" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.2, 0.2)
 scroll_offset = Vector2(-5, -5)
 
-[node name="StationaryBackgroundImage" type="Sprite2D" parent="ParallaxBackground"]
+[node name="BackgroundNebula" type="Sprite2D" parent="ParallaxNebula"]
 modulate = Color(1, 1, 1, 0.32156864)
-position = Vector2(421.00003, 124.000015)
+texture_repeat = 3
+position = Vector2(1213, 43)
 scale = Vector2(4.800028, 4.800027)
 texture = ExtResource("3_t52si")
+region_enabled = true
+region_rect = Rect2(0, 0, 2048, 1024)
 
 [node name="Galaxies1" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.08, 0.08)

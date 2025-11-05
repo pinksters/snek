@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnaucyv43dak0"]
+
+[ext_resource type="Script" uid="uid://vu2vsij2b0a2" path="res://player/headwear/headwear.gd" id="1_y80bn"]
+[ext_resource type="Shader" uid="uid://1kmewg4thb17" path="res://shaders/outline.gdshader" id="2_2lmh7"]
+[ext_resource type="Texture2D" uid="uid://13ntvuvrvlan" path="res://player/headwear/hat_sprites/hat_hawaiian.png" id="2_vfirk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2lmh7"]
+shader = ExtResource("2_2lmh7")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/sprite_tint = Color(1, 1, 1, 1)
+shader_parameter/outline_thickness = 8.00000038
+
+[node name="Headwear" type="Node2D"]
+script = ExtResource("1_y80bn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2lmh7")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_vfirk")

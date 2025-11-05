@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqqfooagyjmu2"
-path="res://.godot/imported/background.png-4e3ee290cce2d8ccd19a2441447ca9ac.ctex"
+uid="uid://brsxa10bw4kk7"
+path="res://.godot/imported/snake_head.png-a336f34bfccb3d2182950feeb02c008b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/space_images/background.png"
-dest_files=["res://.godot/imported/background.png-4e3ee290cce2d8ccd19a2441447ca9ac.ctex"]
+source_file="res://player/snake_body_sprites/snake_head.png"
+dest_files=["res://.godot/imported/snake_head.png-a336f34bfccb3d2182950feeb02c008b.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

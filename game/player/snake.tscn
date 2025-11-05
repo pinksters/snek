@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpvvh7yqhnxmn"]
+[gd_scene load_steps=12 format=3 uid="uid://bpvvh7yqhnxmn"]
 
 [ext_resource type="Script" uid="uid://b841sekryecda" path="res://player/snake.gd" id="1_snake"]
 [ext_resource type="Script" uid="uid://b0j1db7gck8n1" path="res://player/snake_head.gd" id="2_head"]
-[ext_resource type="Texture2D" uid="uid://brsxa10bw4kk7" path="res://player/snake_head.png" id="3_texture"]
+[ext_resource type="Texture2D" uid="uid://brsxa10bw4kk7" path="res://player/snake_body_sprites/snake_head.png" id="3_texture"]
 [ext_resource type="Script" uid="uid://3cm0jh06xsud" path="res://player/snake_body.gd" id="4_body"]
 [ext_resource type="Shader" uid="uid://1kmewg4thb17" path="res://shaders/outline.gdshader" id="4_yvjr7"]
+[ext_resource type="PackedScene" uid="uid://bnaucyv43dak0" path="res://player/headwear/headwear.tscn" id="6_6wktc"]
 
 [sub_resource type="Curve" id="Curve_yvjr7"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7282609, 1), -1.4176563, -1.4176563, 0, 0, Vector2(1, 0), -13.093645, 0.0, 0, 0]
@@ -53,6 +54,11 @@ move_speed = 600.0
 material = SubResource("ShaderMaterial_6wktc")
 scale = Vector2(0.5078125, 0.5078125)
 texture = ExtResource("3_texture")
+
+[node name="Headwear" parent="SnakeHead/Sprite2D" instance=ExtResource("6_6wktc")]
+modulate = Color(0.7750634, 0.7750634, 0.7750634, 1)
+position = Vector2(5.9076924, -124.06154)
+scale = Vector2(1.9692308, 1.9692308)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SnakeHead"]
 shape = SubResource("CircleShape2D_head")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqqfooagyjmu2"
-path="res://.godot/imported/background.png-4e3ee290cce2d8ccd19a2441447ca9ac.ctex"
+uid="uid://2ng87adepgqj"
+path="res://.godot/imported/hat_cowboy.png-79597e368a0429c3679fc162ba97306c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/space_images/background.png"
-dest_files=["res://.godot/imported/background.png-4e3ee290cce2d8ccd19a2441447ca9ac.ctex"]
+source_file="res://player/headwear/hat_sprites/hat_cowboy.png"
+dest_files=["res://.godot/imported/hat_cowboy.png-79597e368a0429c3679fc162ba97306c.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
