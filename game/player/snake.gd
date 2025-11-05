@@ -9,6 +9,7 @@ signal snake_died()
 
 
 func _ready() -> void:
+	Game.play_session.snake = self
 	head.position_updated.connect(_on_head_position_updated)
 	head.head_damaged.connect(_on_head_damaged)
 	head.head_died.connect(_on_head_died)
@@ -29,6 +30,7 @@ func _on_head_damaged(amount: int) -> void:
 
 func _on_head_died() -> void:
 	snake_died.emit()
+	Game.end_play_session()
 
 
 func grow(amount: int = 1) -> void:

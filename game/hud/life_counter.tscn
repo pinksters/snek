@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccd56btd2vu5k"]
+
+[ext_resource type="Script" uid="uid://bpia5dkhtggjy" path="res://hud/life_counter.gd" id="1_7512a"]
+[ext_resource type="Texture2D" uid="uid://brsxa10bw4kk7" path="res://player/snake_body_sprites/snake_head.png" id="1_cen5y"]
+
+[node name="LifeCounter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7512a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LifeIndicator1" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("1_cen5y")
+expand_mode = 1
+
+[node name="LifeIndicator2" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("1_cen5y")
+expand_mode = 1
+
+[node name="LifeIndicator3" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("1_cen5y")
+expand_mode = 1

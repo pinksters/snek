@@ -14,13 +14,19 @@ var current_health: int
 var is_invulnerable: bool = false
 var invulnerability_timer: float = 0.0
 var current_direction: Vector2 = Vector2.RIGHT
+
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var shield_sprite: Sprite2D = $Sprite2D/InvincibilityShield
 
 
 func _ready() -> void:
 	current_health = max_health
 	sprite.rotation = current_direction.angle() - PI / 2
+	_set_visual_invulnerability(false)
+	
+	# Emit initial signals to initiate HUD
+	EventBus.snake_health_changed.emit(current_health, max_health)
 
 
 func _physics_process(delta: float) -> void:
@@ -64,10 +70,10 @@ func take_damage(amount: int = 1) -> void:
 
 	current_health -= amount
 	head_damaged.emit(amount)
-
+	EventBus.snake_health_changed.emit(current_health, max_health)
+	
 	if current_health <= 0:
 		head_died.emit()
-		queue_free()
 	else:
 		_start_invulnerability()
 
@@ -79,9 +85,7 @@ func _start_invulnerability() -> void:
 
 
 func _set_visual_invulnerability(active: bool) -> void:
-	if sprite:
-		# Flash the sprite during invulnerability
-		sprite.modulate.a = 0.5 if active else 1.0
+	shield_sprite.visible = active
 
 
 func teleport_to(new_position: Vector2) -> void:

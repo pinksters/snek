@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmoj53lfyk1im"]
+
+[ext_resource type="Script" uid="uid://cnuigvyegahsp" path="res://menus/game_over_screen.gd" id="1_fgh54"]
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fgh54")
+
+[node name="RetryButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 521.0
+offset_top = 379.0
+offset_right = 638.0
+offset_bottom = 426.0
+text = "Retry"
+
+[node name="MainMenuButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 523.0
+offset_top = 462.0
+offset_right = 640.0
+offset_bottom = 509.0
+text = "Main Menu"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 238.0
+offset_right = 798.0
+offset_bottom = 284.0
+text = "Game over!"
+horizontal_alignment = 1
+vertical_alignment = 1

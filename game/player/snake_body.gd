@@ -139,7 +139,7 @@ func check_collision_with_head(head_pos: Vector2, min_safe_index: int = 5) -> bo
 	# Don't check points too close to the head
 	for i in range(min_safe_index, body_points.size()):
 		var point = body_points[i]
-		if head_pos.distance_to(point.position) < body_width:
+		if head_pos.distance_to(point.position) < (body_width / 2):
 			return true
 	return false
 

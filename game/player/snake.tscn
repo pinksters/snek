@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bpvvh7yqhnxmn"]
+[gd_scene load_steps=14 format=3 uid="uid://bpvvh7yqhnxmn"]
 
 [ext_resource type="Script" uid="uid://b841sekryecda" path="res://player/snake.gd" id="1_snake"]
 [ext_resource type="Script" uid="uid://b0j1db7gck8n1" path="res://player/snake_head.gd" id="2_head"]
@@ -25,6 +25,17 @@ shader = ExtResource("4_yvjr7")
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 shader_parameter/sprite_tint = Color(0.9999997, 0.34450075, 0.96361226, 1)
 shader_parameter/outline_thickness = 10.0
+
+[sub_resource type="Gradient" id="Gradient_6wktc"]
+offsets = PackedFloat32Array(0, 0.22, 0.55, 0.67)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0.73333335, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_whrd0"]
+gradient = SubResource("Gradient_6wktc")
+width = 192
+height = 192
+fill = 1
+fill_from = Vector2(0.50427353, 0.51282054)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_head"]
 radius = 16.0
@@ -59,6 +70,12 @@ texture = ExtResource("3_texture")
 modulate = Color(0.7750634, 0.7750634, 0.7750634, 1)
 position = Vector2(5.9076924, -124.06154)
 scale = Vector2(1.9692308, 1.9692308)
+
+[node name="InvincibilityShield" type="Sprite2D" parent="SnakeHead/Sprite2D"]
+modulate = Color(0.32941177, 0.63529414, 1, 1)
+position = Vector2(1.9692307, -15.753845)
+scale = Vector2(1.9692308, 1.9692308)
+texture = SubResource("GradientTexture2D_whrd0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SnakeHead"]
 shape = SubResource("CircleShape2D_head")

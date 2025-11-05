@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://djvabqniyg3oa"]
 
-[ext_resource type="Script" uid="uid://huqulox45np3" path="res://play_area/play_area.gd" id="1_jf821"]
+[ext_resource type="Script" uid="uid://huqulox45np3" path="res://gameplay_scene/play_area.gd" id="1_jf821"]
 [ext_resource type="PackedScene" uid="uid://bpvvh7yqhnxmn" path="res://player/snake.tscn" id="2_bcrev"]
 [ext_resource type="Texture2D" uid="uid://bqqfooagyjmu2" path="res://assets/space_images/background.png" id="2_t52si"]
 [ext_resource type="Script" uid="uid://5aixtcvr1csc" path="res://utils/spinning_sprite.gd" id="3_8r5wk"]
@@ -260,6 +260,7 @@ texture = ExtResource("4_i2nbb")
 [node name="Camera2D" type="Camera2D" parent="Snake/SnakeHead" index="2"]
 zoom = Vector2(0.32, 0.32)
 process_callback = 0
+limit_enabled = false
 position_smoothing_enabled = true
 position_smoothing_speed = 30.0
 

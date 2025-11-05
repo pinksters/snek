@@ -18,8 +18,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Game="*res://game_manager/game.gd"
+Game="*res://autoload/game.gd"
 PolkaGodot="*res://addons/polkagodot/autoload/polkagodot.gd"
+EventBus="*res://autoload/event_bus.gd"
 
 [display]
 
