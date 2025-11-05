@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://cj8vh4px3qhqc"]
+
+[ext_resource type="Script" uid="uid://dc3bdglf81yva" path="res://gameplay_entities/projectile/projectile.gd" id="1_1"]
+
+[sub_resource type="Gradient" id="Gradient_36d44"]
+offsets = PackedFloat32Array(0, 0.755, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ksasa"]
+gradient = SubResource("Gradient_36d44")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.4957265, 0.517094)
+fill_to = Vector2(0.8418803, 0.17948718)
+
+[sub_resource type="Curve" id="Curve_10drc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.034396887), -1.6164341, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ksasa"]
+colors = PackedColorArray(0.5373735, 0.17229518, 0.99999994, 1, 1, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_6nqio"]
+offsets = PackedFloat32Array(0, 0.44915253, 0.5536723, 1)
+colors = PackedColorArray(0.20871013, 0.20871016, 0.20871013, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.20784314, 0.20784314, 0.20784314, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_36d44"]
+gradient = SubResource("Gradient_6nqio")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1"]
+radius = 15.0
+height = 66.0
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_1")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(19, 0)
+amount = 32
+texture = SubResource("GradientTexture2D_ksasa")
+lifetime = 0.25
+emission_shape = 1
+emission_sphere_radius = 11.61
+gravity = Vector2(0, 0)
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_10drc")
+color = Color(2.4325802, 2.4325802, 2.4325802, 1)
+color_ramp = SubResource("Gradient_ksasa")
+
+[node name="Visual" type="Line2D" parent="."]
+rotation = 1.5707964
+points = PackedVector2Array(7.86805e-07, 18, -7.86805e-07, -18)
+width = 30.0
+default_color = Color(3.7724662, 1.8279623, 5.5101075, 1)
+texture = SubResource("GradientTexture2D_36d44")
+texture_mode = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_1")
