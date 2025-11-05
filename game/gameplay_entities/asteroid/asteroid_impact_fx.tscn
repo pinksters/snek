@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://o6fu1d5yuuts"]
+
+[ext_resource type="Script" uid="uid://xegl0jg38wwq" path="res://gameplay_entities/asteroid/asteroid_impact_fx.gd" id="1_f0fga"]
+
+[sub_resource type="Curve" id="Curve_f0fga"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9664948, 0.021435738), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="AsteroidImpactFX" type="Node2D"]
+script = ExtResource("1_f0fga")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 500.0
+damping_min = 10.0
+damping_max = 50.0
+scale_amount_min = 20.0
+scale_amount_max = 50.0
+scale_amount_curve = SubResource("Curve_f0fga")
+color = Color(0.41962644, 0.18828219, 9.62615e-08, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://djvabqniyg3oa"]
+[gd_scene load_steps=20 format=3 uid="uid://djvabqniyg3oa"]
 
 [ext_resource type="Script" uid="uid://huqulox45np3" path="res://gameplay_scene/play_area.gd" id="1_jf821"]
 [ext_resource type="PackedScene" uid="uid://bpvvh7yqhnxmn" path="res://player/snake.tscn" id="2_bcrev"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cjbeudjhrxnk2" path="res://assets/space_images/nebula-2.png" id="4_i2nbb"]
 [ext_resource type="Texture2D" uid="uid://bmoiuuwgstos8" path="res://assets/space_images/nebula-1.png" id="5_i2nbb"]
 [ext_resource type="Texture2D" uid="uid://5gm4kku1hnaw" path="res://assets/space_images/galaxy-2.png" id="6_lese2"]
+[ext_resource type="Script" uid="uid://dbfaqttmrp8s5" path="res://gameplay_entities/asteroid/asteroid_spawner.gd" id="7_asteroid"]
 
 [sub_resource type="Gradient" id="Gradient_lese2"]
 offsets = PackedFloat32Array(0, 0.5334346, 0.7948328)
@@ -264,6 +265,9 @@ limit_enabled = false
 position_smoothing_enabled = true
 position_smoothing_speed = 30.0
 
+[node name="AsteroidSpawner" type="Node2D" parent="."]
+script = ExtResource("7_asteroid")
+
 [node name="BoundaryVisuals" type="Node2D" parent="."]
 
 [node name="Line2D" type="Line2D" parent="BoundaryVisuals"]
@@ -320,6 +324,6 @@ position = Vector2(2194, 1268)
 environment = ExtResource("3_uhuks")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.7919991, 0.79199916, 0.7919991, 1)
+color = Color(0.8346143, 0.8346143, 0.8346143, 1)
 
 [editable path="Snake"]
