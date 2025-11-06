@@ -36,4 +36,12 @@ func _physics_process(delta: float) -> void:
 
 func _pickup() -> void:
 	Game.play_session.score += point_value
+
+	# Spawn pickup message
+	var message_scene: PackedScene = preload("res://gameplay_entities/collectible/coin_pickup_message.tscn")
+	var message: CoinPickupMessage = message_scene.instantiate()
+	message.global_position = global_position
+	message.score_value = point_value
+	add_sibling(message)
+
 	queue_free()

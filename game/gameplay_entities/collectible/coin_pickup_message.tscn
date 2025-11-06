@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1b0e1p7lndau"]
+
+[ext_resource type="Script" uid="uid://ctxmb4nkeexw0" path="res://gameplay_entities/collectible/coin_pickup_message.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://cev2glk8b7dwy" path="res://addons/polkagodot/assets/fonts/unbounded.ttf" id="2_font"]
+
+[node name="CoinPickupMessage" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -50.0
+offset_top = -54.0
+offset_right = 50.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(0.29400337, 0.7703792, 0.99999994, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 64
+text = "+1"
+horizontal_alignment = 1
+vertical_alignment = 1

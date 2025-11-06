@@ -138,7 +138,7 @@ func _update_thrusters_for_point(point_idx: int, point_position: Vector2, next_p
 
 ## Check collisions between the head and the body by checking the distance to each of the points.
 ## Obviously this is much more performant than adding physical collisions for body segments.
-func check_collision_with_head(head_pos: Vector2, min_safe_index: int = 5) -> bool:
+func check_collision_with_head(head_pos: Vector2, min_safe_index: int = 10) -> bool:
 	# Don't check points too close to the head
 	for i in range(min_safe_index, body_points.size()):
 		var point = body_points[i]
