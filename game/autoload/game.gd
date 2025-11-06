@@ -9,6 +9,10 @@ func start_play_session() -> void:
 
 
 func end_play_session() -> void:
+	var image: Image = get_viewport().get_texture().get_image()
+	var texture: ImageTexture = ImageTexture.create_from_image(image)
+	play_session.game_over_screenshot = texture
+	
 	get_tree().change_scene_to_file("res://menus/game_over_screen.tscn")
 
 

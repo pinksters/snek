@@ -6,6 +6,9 @@ var world_bounds_topleft: Vector2 = Vector2(-INF, -INF)
 var world_bounds_bottomright: Vector2 = Vector2(INF, INF)
 var snake: Snake = null
 
+# Screenshot of the game taken just before transitioning to the game over screen
+var game_over_screenshot: ImageTexture = null
+
 # Game stats
 var score: int = 0:
 	set(new_score):

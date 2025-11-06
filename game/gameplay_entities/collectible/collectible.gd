@@ -1,7 +1,7 @@
 extends Area2D
 class_name Collectible
 
-var magnetic_strength: float = 10000.0
+var magnetic_strength: float = 12000.0
 var pickup_range: float = 80.0
 var point_value: int = 1
 var magnetic_strength_squared: float = magnetic_strength * magnetic_strength

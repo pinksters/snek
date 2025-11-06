@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmoj53lfyk1im"]
+[gd_scene load_steps=3 format=3 uid="uid://bmoj53lfyk1im"]
 
 [ext_resource type="Script" uid="uid://cnuigvyegahsp" path="res://menus/game_over_screen.gd" id="1_fgh54"]
+[ext_resource type="Texture2D" uid="uid://bqqfooagyjmu2" path="res://assets/space_images/background.png" id="2_s3tb6"]
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -10,6 +11,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fgh54")
+
+[node name="GameOverTextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s3tb6")
+expand_mode = 2
+stretch_mode = 5
 
 [node name="RetryButton" type="Button" parent="."]
 layout_mode = 0
