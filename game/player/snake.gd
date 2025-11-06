@@ -29,8 +29,8 @@ func _on_head_damaged(amount: int) -> void:
 
 func _on_head_died() -> void:
 	for i in 2: # Wait for all post-gameover visuals to initialize before ending the play session and taking the screenshot of the viewport
-		await get_tree().physics_frame
-		await get_tree().process_frame
+		if is_inside_tree(): await get_tree().physics_frame
+		if is_inside_tree(): await get_tree().process_frame
 	
 	Game.end_play_session()
 

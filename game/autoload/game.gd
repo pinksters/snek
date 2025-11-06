@@ -14,6 +14,9 @@ func end_play_session() -> void:
 	var texture: ImageTexture = ImageTexture.create_from_image(image)
 	play_session.game_over_screenshot = texture
 	
+	# Record last position of player in viewport
+	play_session.game_over_player_position = (play_session.snake.head.get_global_transform_with_canvas().origin) / Vector2(image.get_size())
+	
 	get_tree().change_scene_to_file("res://menus/game_over_screen.tscn")
 
 
