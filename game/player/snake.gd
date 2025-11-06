@@ -2,7 +2,6 @@ extends Node2D
 class_name Snake
 
 signal snake_damaged(health: int)
-signal snake_died()
 
 @onready var head: SnakeHead = $SnakeHead
 @onready var body: SnakeBody = $SnakeBody
@@ -29,7 +28,10 @@ func _on_head_damaged(amount: int) -> void:
 
 
 func _on_head_died() -> void:
-	snake_died.emit()
+	for i in 2: # Wait for all post-gameover visuals to initialize before ending the play session and taking the screenshot of the viewport
+		await get_tree().physics_frame
+		await get_tree().process_frame
+	
 	Game.end_play_session()
 
 

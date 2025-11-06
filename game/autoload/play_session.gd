@@ -8,6 +8,7 @@ var snake: Snake = null
 
 # Screenshot of the game taken just before transitioning to the game over screen
 var game_over_screenshot: ImageTexture = null
+var game_over_player_position: Vector2 = Vector2.ZERO
 
 # Game stats
 var score: int = 0:

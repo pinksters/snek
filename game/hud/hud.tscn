@@ -1,21 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://hquvtue81ek5"]
+[gd_scene load_steps=5 format=3 uid="uid://hquvtue81ek5"]
 
 [ext_resource type="PackedScene" uid="uid://ccd56btd2vu5k" path="res://hud/life_counter.tscn" id="1_2gk58"]
+[ext_resource type="Script" uid="uid://cimrhdenm57ny" path="res://hud/hud.gd" id="1_w8tcp"]
 [ext_resource type="PackedScene" uid="uid://c7wbwdxn8syf3" path="res://hud/ammo_counter.tscn" id="2_318vg"]
-[ext_resource type="PackedScene" uid="uid://cqy8k3m2n5vj1" path="res://hud/points_counter.tscn" id="3_points"]
+[ext_resource type="PackedScene" uid="uid://caxhcsij0lmrs" path="res://hud/points_counter.tscn" id="3_points"]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_w8tcp")
 
 [node name="LifeCounter" parent="." instance=ExtResource("1_2gk58")]
 
 [node name="AmmoCounter" parent="." instance=ExtResource("2_318vg")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
 offset_left = -195.0
 offset_top = -92.0
 offset_right = 197.0
-grow_vertical = 0
 
 [node name="PointsCounter" parent="." instance=ExtResource("3_points")]

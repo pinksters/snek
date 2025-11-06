@@ -9,6 +9,7 @@ func start_play_session() -> void:
 
 
 func end_play_session() -> void:
+	# Record last screenshot of the viewport
 	var image: Image = get_viewport().get_texture().get_image()
 	var texture: ImageTexture = ImageTexture.create_from_image(image)
 	play_session.game_over_screenshot = texture
