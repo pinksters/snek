@@ -60,8 +60,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		_try_shoot()
 
+	# Can turn into any direction, EXCEPT the one directly opposite to the current direction
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if input_direction.length() > 0:
+	if input_direction.length() > 0 and abs(input_direction.angle_to(current_direction)) < (PI - 0.1):
 		current_direction = input_direction
 		sprite.rotation = current_direction.angle() - PI / 2
 	
