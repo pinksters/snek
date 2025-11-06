@@ -44,6 +44,7 @@ func _ready() -> void:
 	# Emit initial signals to initiate HUD
 	EventBus.snake_health_changed.emit(current_health, max_health)
 	EventBus.snake_ammo_changed.emit(ammo, max_ammo)
+	EventBus.score_changed.connect(_on_score_changed)
 
 
 func _physics_process(delta: float) -> void:
@@ -142,3 +143,10 @@ func _try_shoot() -> void:
 
 	var spawn_pos = global_position + current_direction.normalized() * projectile_spawn_offset
 	projectile.initialize(spawn_pos, current_direction)
+
+
+## Speed up on positive score changes
+func _on_score_changed(old_score: int, new_score: int) -> void:
+	var score_change: int = new_score - old_score
+	if score_change > 0:
+		move_speed += score_change * 3

@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://caxhcsij0lmrs"]
+
+[ext_resource type="Script" uid="uid://d0vhsvq3vubr3" path="res://hud/points_counter.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cqe2kvsdqt8nr" path="res://gameplay_entities/collectible/collectible_side_b.png" id="2_coin"]
+[ext_resource type="FontFile" uid="uid://cev2glk8b7dwy" path="res://addons/polkagodot/assets/fonts/unbounded.ttf" id="3_font"]
+
+[node name="PointsCounter" type="Control"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_right = -20.0
+offset_bottom = 80.0
+grow_horizontal = 0
+script = ExtResource("1_script")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 2
+
+[node name="CoinIcon" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("2_coin")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PointsLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1

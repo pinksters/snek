@@ -94,6 +94,34 @@ func _despawn() -> void:
 	queue_free()
 
 
+func _spawn_collectibles() -> void:
+	var collectible_scene: PackedScene = preload("res://gameplay_entities/collectible/collectible.tscn")
+
+	# Spawn 1-3 collectibles based on asteroid size
+	var num_collectibles: int = clampi(randi_range(0, size), 1, 3)
+
+	for i in range(num_collectibles):
+		var collectible: Collectible = collectible_scene.instantiate()
+
+		# Pick random target position near asteroid
+		var angle: float = randf() * TAU
+		var distance: float = randf_range(80.0, 150.0)
+		var target_pos: Vector2 = global_position + Vector2(cos(angle), sin(angle)) * distance
+
+		# Initially spawn at center of asteroid
+		collectible.global_position = global_position
+		collectible.scale = Vector2.ZERO
+		add_sibling(collectible)
+
+		# Animate to target position
+		var tween: Tween = collectible.create_tween()
+		tween.set_parallel(true)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.set_trans(Tween.TRANS_BACK)
+		tween.tween_property(collectible, "global_position", target_pos, 0.5)
+		tween.tween_property(collectible, "scale", Vector2.ONE, 0.5)
+
+
 func _on_area_entered(area: Area2D) -> void:
 	if area is Asteroid and is_active:
 		take_damage()
@@ -110,6 +138,7 @@ func take_damage() -> void:
 	var impact_fx = impact_fx_scene.instantiate()
 	impact_fx.position = position
 	add_sibling(impact_fx)
+	_spawn_collectibles()
 	if size <= 1: _despawn()
 	else:         split()
 

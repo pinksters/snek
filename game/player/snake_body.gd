@@ -4,10 +4,10 @@ class_name SnakeBody
 const FIRST_THRUSTER_OFFSET: int = 5
 const THRUSTER_SPACING: int = 15
 
-@export var body_width: float = 40.0
-@export var point_spacing: float = 5.0
-@export var initial_length: int = 20
-@export var routing_padding: float = 400.0
+var body_width: float = 85.0
+var point_spacing: float = 30.0
+var initial_length: int = 15
+var routing_padding: float = 400.0
 
 var body_points: Array[BodyPoint] = []
 var thrusters: Array[Node2D] = []
@@ -19,6 +19,7 @@ func _ready() -> void:
 	joint_mode = Line2D.LINE_JOINT_ROUND
 	begin_cap_mode = Line2D.LINE_CAP_ROUND
 	end_cap_mode = Line2D.LINE_CAP_ROUND
+	EventBus.score_changed.connect(_on_score_changed)
 
 
 func add_head_position(head_pos: Vector2, is_teleport: bool = false) -> void:
@@ -62,8 +63,9 @@ func _update_visual() -> void:
 
 	var bounds_topleft: Vector2 = Game.play_session.world_bounds_topleft
 	var bounds_bottomright: Vector2 = Game.play_session.world_bounds_bottomright
-
-	for i in range(body_points.size()):
+	var total_points: int = body_points.size()
+	
+	for i in range(total_points):
 		var point = body_points[i]
 		var prev_point = point
 		var next_point = point
@@ -76,7 +78,8 @@ func _update_visual() -> void:
 		add_point(point.position)
 		
 		# Place rocket thrusters along the snek's body
-		_update_thrusters_for_point(i, point.position, next_point.position, point.connection_type)
+		if i < (total_points - 8):
+			_update_thrusters_for_point(i, point.position, next_point.position, point.connection_type)
 		
 		# Handle teleport connections by routing around the playable area
 		if point.connection_type == BodyPoint.ConnectionType.TELEPORT && i < body_points.size() - 1:
@@ -156,3 +159,10 @@ func modify_length(delta_length: int) -> void:
 
 func get_body_length() -> int:
 	return initial_length
+
+
+## Grow on positive score changes
+func _on_score_changed(old_score: int, new_score: int) -> void:
+	var score_change: int = new_score - old_score
+	if score_change > 0:
+		modify_length(score_change)
