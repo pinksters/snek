@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3xkd8m0ry3kl"]
+
+[ext_resource type="Script" path="res://menus/death_marker.gd" id="1_script"]
+
+[node name="DeathMarker" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="XShape" type="Node2D" parent="."]
+
+[node name="Glow" type="Polygon2D" parent="XShape"]
+color = Color(1, 0.2, 0.2, 0.3)
+polygon = PackedVector2Array(-40, -50, -30, -50, 0, -15, 30, -50, 40, -50, 10, -10, 40, 30, 30, 30, 0, 5, -30, 30, -40, 30, -10, -10)
+
+[node name="XLeft" type="Polygon2D" parent="XShape"]
+color = Color(0.8, 0, 0, 1)
+polygon = PackedVector2Array(-35, -45, -25, -45, 0, -10, 25, -45, 35, -45, 5, -5, 35, 35, 25, 35, 0, 0, -25, 35, -35, 35, -5, -5)
+
+[node name="Highlight" type="Polygon2D" parent="XShape"]
+color = Color(1, 0.4, 0.4, 1)
+polygon = PackedVector2Array(-30, -40, -22, -40, -5, -20, -15, -10)
+
+[node name="OuterGlow" type="Line2D" parent="XShape"]
+points = PackedVector2Array(-35, -45, 0, -10, 35, 35)
+width = 15.0
+default_color = Color(1, 0, 0, 0.2)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="OuterGlow2" type="Line2D" parent="XShape"]
+points = PackedVector2Array(35, -45, 0, -10, -35, 35)
+width = 15.0
+default_color = Color(1, 0, 0, 0.2)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2

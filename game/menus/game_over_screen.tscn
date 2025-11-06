@@ -1,25 +1,48 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmoj53lfyk1im"]
+[gd_scene load_steps=10 format=3 uid="uid://bmoj53lfyk1im"]
 
 [ext_resource type="Script" uid="uid://cnuigvyegahsp" path="res://menus/game_over_screen.gd" id="1_fgh54"]
 [ext_resource type="Shader" uid="uid://d4lgamt2iekcg" path="res://menus/shockwave_transition.gdshader" id="2_ixv5n"]
 [ext_resource type="Texture2D" uid="uid://bqqfooagyjmu2" path="res://assets/space_images/background.png" id="2_s3tb6"]
-
-[sub_resource type="Gradient" id="Gradient_ixv5n"]
-colors = PackedColorArray(0.27861848, 0.0009001413, 0.49535215, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6kq20"]
-gradient = SubResource("Gradient_ixv5n")
-fill = 1
-fill_from = Vector2(0.5, 0.52136755)
+[ext_resource type="Texture2D" uid="uid://ckj01f3hv2udm" path="res://assets/space_images/galaxy-1.png" id="3_l6ryk"]
+[ext_resource type="FontFile" uid="uid://cev2glk8b7dwy" path="res://addons/polkagodot/assets/fonts/unbounded.ttf" id="4_font"]
+[ext_resource type="Script" uid="uid://5aixtcvr1csc" path="res://utils/spinning_sprite.gd" id="4_vlsje"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6kq20"]
 shader = ExtResource("2_ixv5n")
-shader_parameter/progress = 0.25600001216
+shader_parameter/progress = 0.1950000092625
 shader_parameter/center_uv = Vector2(0.5, 0.5)
-shader_parameter/edge_width = 0.00999999977648
+shader_parameter/edge_width = 0.08
 shader_parameter/distortion_strength = 0.15
-shader_parameter/wave_frequency = 4.000000142499999
-shader_parameter/rotation_speed = 10.0
+shader_parameter/wave_frequency = 8.0
+shader_parameter/rotation_speed = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.050980393, 0.050980393, 0.14901961, 0.44313726)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.4, 0.6, 1, 0.9)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.3, 0.5, 1, 0.4)
+shadow_size = 20
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.15, 0.2, 0.4, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.7, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -30,14 +53,26 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fgh54")
 
-[node name="BackgroundGradient" type="TextureRect" parent="."]
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+self_modulate = Color(0.3403393, 0.34033933, 0.3403393, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_6kq20")
+texture = ExtResource("2_s3tb6")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="Nebula" type="Sprite2D" parent="BackgroundTexture"]
+modulate = Color(1, 1, 1, 0.32156864)
+position = Vector2(642, 355)
+rotation = -6470.384
+scale = Vector2(1.5833981, 1.5833981)
+texture = ExtResource("3_l6ryk")
+script = ExtResource("4_vlsje")
+spin_speed = -0.3
 
 [node name="GameOverTextureRect" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_6kq20")
@@ -49,68 +84,154 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_s3tb6")
 expand_mode = 2
-stretch_mode = 5
+stretch_mode = 6
 
-[node name="RetryButton" type="Button" parent="."]
+[node name="UIPanel" type="PanelContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -58.5
-offset_top = 48.5
-offset_right = 58.5
-offset_bottom = 95.5
+offset_left = -280.0
+offset_top = -227.0
+offset_right = 280.0
+offset_bottom = 227.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Retry"
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="MainMenuButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -58.5
-offset_top = 136.5
-offset_right = 58.5
-offset_bottom = 183.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Main Menu"
+[node name="DecorativeCorners" type="Control" parent="UIPanel"]
+layout_mode = 2
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -223.0
-offset_top = -143.0
-offset_right = 223.0
-offset_bottom = -97.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Game over!"
+[node name="TopLeftCorner" type="Line2D" parent="UIPanel/DecorativeCorners"]
+points = PackedVector2Array(10, 10, 40, 10, 10, 40)
+width = 4.0
+default_color = Color(0.6, 0.8, 1, 0.8)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="TopRightCorner" type="Line2D" parent="UIPanel/DecorativeCorners"]
+points = PackedVector2Array(550, 10, 520, 10, 550, 40)
+width = 4.0
+default_color = Color(0.6, 0.8, 1, 0.8)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="BottomLeftCorner" type="Line2D" parent="UIPanel/DecorativeCorners"]
+points = PackedVector2Array(10, 430, 40, 430, 10, 400)
+width = 4.0
+default_color = Color(0.6, 0.8, 1, 0.8)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="BottomRightCorner" type="Line2D" parent="UIPanel/DecorativeCorners"]
+points = PackedVector2Array(550, 430, 520, 430, 550, 400)
+width = 4.0
+default_color = Color(0.6, 0.8, 1, 0.8)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="OrbitingDots" type="Node2D" parent="UIPanel/DecorativeCorners"]
+position = Vector2(280, 220)
+
+[node name="Dot1" type="Polygon2D" parent="UIPanel/DecorativeCorners/OrbitingDots"]
+position = Vector2(120, 0)
+color = Color(0.6, 0.8, 1, 1)
+polygon = PackedVector2Array(-6, -6, 6, -6, 6, 6, -6, 6)
+
+[node name="Dot2" type="Polygon2D" parent="UIPanel/DecorativeCorners/OrbitingDots"]
+position = Vector2(-120, 0)
+color = Color(0.4, 0.7, 1, 1)
+polygon = PackedVector2Array(-5, -5, 5, -5, 5, 5, -5, 5)
+
+[node name="Dot3" type="Polygon2D" parent="UIPanel/DecorativeCorners/OrbitingDots"]
+position = Vector2(0, -100)
+color = Color(0.5, 0.75, 1, 1)
+polygon = PackedVector2Array(-5, -5, 5, -5, 5, 5, -5, 5)
+
+[node name="Dot4" type="Polygon2D" parent="UIPanel/DecorativeCorners/OrbitingDots"]
+position = Vector2(0, 100)
+color = Color(0.7, 0.85, 1, 1)
+polygon = PackedVector2Array(-5, -5, 5, -5, 5, 5, -5, 5)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIPanel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Spacer1" type="Control" parent="UIPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="ScoreTitle" type="Label" parent="UIPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.85, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.2, 0.4, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 38
+text = "FINAL SCORE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScoreLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -223.0
-offset_top = -47.0
-offset_right = 223.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ScoreLabel" type="Label" parent="UIPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.5, 1)
+theme_override_colors/font_shadow_color = Color(0.8, 0.6, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 68
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Spacer2" type="Control" parent="UIPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="RetryButton" type="Button" parent="UIPanel/VBoxContainer"]
+custom_minimum_size = Vector2(380, 65)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0.7, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
+text = "RETRY"
+
+[node name="MainMenuButton" type="Button" parent="UIPanel/VBoxContainer"]
+custom_minimum_size = Vector2(380, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_colors/font_pressed_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button")
+text = "MAIN MENU"
+
+[node name="Spacer3" type="Control" parent="UIPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2

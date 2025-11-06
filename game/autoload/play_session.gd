@@ -10,7 +10,8 @@ var snake: Snake = null
 var game_over_screenshot: ImageTexture = null
 var game_over_player_position: Vector2 = Vector2.ZERO
 
-# Game stats
+# Game state
+var is_active: bool = true
 var score: int = 0:
 	set(new_score):
 		var old_score: int = score
