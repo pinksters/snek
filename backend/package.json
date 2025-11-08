@@ -1,0 +1,32 @@
+{
+  "name": "snake-game-backend",
+  "version": "1.0.0",
+  "description": "Score validation backend for Pink Snake game",
+  "main": "snake-server.js",
+  "scripts": {
+    "start": "node snake-server.js",
+    "dev": "nodemon snake-server.js"
+  },
+  "keywords": [
+    "snake",
+    "game",
+    "blockchain",
+    "polkadot",
+    "score",
+    "validation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "node-fetch": "^2.6.9",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

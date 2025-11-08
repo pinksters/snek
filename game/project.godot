@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 Game="*res://autoload/game.gd"
 PolkaGodot="*res://addons/polkagodot/autoload/polkagodot.gd"
 EventBus="*res://autoload/event_bus.gd"
+ScoreServer="*res://autoload/score_server.gd"
 
 [display]
 

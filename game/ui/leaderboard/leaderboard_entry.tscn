@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt3dmve3m5dtr"]
+
+[ext_resource type="Script" uid="uid://b32hwj4i6bqsd" path="res://ui/leaderboard/leaderboard_entry.gd" id="1_entry"]
+[ext_resource type="PackedScene" uid="uid://bnaucyv43dak0" path="res://player/headwear/headwear.tscn" id="2_mtgow"]
+[ext_resource type="Texture2D" uid="uid://brsxa10bw4kk7" path="res://player/snake_body_sprites/snake_head.png" id="2_rwhak"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.15, 0.15, 0.2, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.4, 0.5, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="LeaderboardEntry" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 80)
+offset_right = 400.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+script = ExtResource("1_entry")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="RankLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AvatarContainer" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="AvatarFrame" type="Panel" parent="MarginContainer/HBoxContainer/AvatarContainer"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 7.0
+offset_right = 57.0
+offset_bottom = 68.0
+
+[node name="Avatar" type="Sprite2D" parent="MarginContainer/HBoxContainer/AvatarContainer"]
+self_modulate = Color(1, 0.47058824, 1, 1)
+position = Vector2(28, 42)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_rwhak")
+
+[node name="Headwear" parent="MarginContainer/HBoxContainer/AvatarContainer/Avatar" instance=ExtResource("2_mtgow")]
+unique_name_in_owner = true
+position = Vector2(3.484314, -115.941986)
+scale = Vector2(1.755, 1.755)
+mode = 1
+
+[node name="WalletLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0x1234...5678"
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "1000"
+horizontal_alignment = 2
+vertical_alignment = 1
