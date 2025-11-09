@@ -14,7 +14,8 @@ config/name="Liquidity Snake"
 run/main_scene="uid://ckrtyir2cvkmu"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
-config/icon="res://icon.svg"
+boot_splash/image="uid://umquc7cky2wd"
+config/icon="uid://umquc7cky2wd"
 
 [autoload]
 

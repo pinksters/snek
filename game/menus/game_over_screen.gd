@@ -107,10 +107,6 @@ func animate_orbiting_dots() -> void:
 		pulse_tween.set_loops()
 		pulse_tween.set_ease(Tween.EASE_IN_OUT)
 		pulse_tween.set_trans(Tween.TRANS_SINE)
-
-		# Stagger the pulse timing for each dot
-		var delay = i * 0.3
-		await get_tree().create_timer(delay).timeout
-
-		pulse_tween.tween_property(dot, "scale", Vector2(1.4, 1.4), 0.8)
+		
+		pulse_tween.tween_property(dot, "scale", Vector2(1.4, 1.4), 0.8).set_delay(i * 0.3)
 		pulse_tween.tween_property(dot, "scale", Vector2.ONE, 0.8)

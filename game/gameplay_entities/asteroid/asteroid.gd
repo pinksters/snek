@@ -57,7 +57,7 @@ func _generate_random_polygon() -> void:
 
 func _apply_polygon_to_nodes() -> void:
 	polygon.polygon = polygon_points
-	collision_polygon.polygon = polygon_points
+	collision_polygon.set_deferred("polygon", polygon_points)
 	border_line.points = polygon_points
 
 
