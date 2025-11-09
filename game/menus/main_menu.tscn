@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvervffoga1s5" path="res://menus/main_menu.gd" id="1_chmv6"]
 [ext_resource type="PackedScene" uid="uid://dlkwj8vqxmfne" path="res://addons/polkagodot/ui/asset_management_button/asset_management_button.tscn" id="2_o5w3e"]
-[ext_resource type="PackedScene" path="res://ui/leaderboard/timed_leaderboard.tscn" id="2_oblsv"]
+[ext_resource type="PackedScene" uid="uid://1bgp7cs813ul" path="res://ui/leaderboard/timed_leaderboard.tscn" id="2_oblsv"]
 [ext_resource type="PackedScene" uid="uid://cfhdf0o6rdm6e" path="res://addons/polkagodot/ui/wallet_connect_button/wallet_connect_button.tscn" id="3_1x3cv"]
 [ext_resource type="FontFile" uid="uid://cev2glk8b7dwy" path="res://addons/polkagodot/assets/fonts/unbounded.ttf" id="4_rqbgu"]
 
@@ -17,14 +17,17 @@ script = ExtResource("1_chmv6")
 
 [node name="TimedLeaderboard" parent="." instance=ExtResource("2_oblsv")]
 layout_mode = 1
-offset_right = -790.0
+anchors_preset = 9
+anchor_right = 0.0
+offset_right = 625.0
+grow_horizontal = 1
 
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 517.0
-offset_top = 404.0
-offset_right = 766.0
-offset_bottom = 520.0
+offset_left = 824.0
+offset_top = 410.0
+offset_right = 1073.0
+offset_bottom = 526.0
 text = "PLAY"
 
 [node name="AssetManagementButton" parent="." instance=ExtResource("2_o5w3e")]
@@ -56,10 +59,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -265.0
-offset_top = -158.0
-offset_right = 265.0
-offset_bottom = -56.0
+offset_left = 48.0
+offset_top = -148.0
+offset_right = 578.0
+offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 2
 

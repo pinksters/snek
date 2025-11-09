@@ -89,9 +89,9 @@ func _display_results(results: Array):
 			continue
 		
 		var rank = i + 1
-		var address = result.get("address", "Unknown")
-		var score = result.get("bestScore", 0)
-		var hat_type = result.get("hatType", "")
+		var address = str(result.get("address", "Unknown"))
+		var score = int(result.get("bestScore", 0))
+		var hat_type = str(result.get("hatType", ""))
 		
 		var entry = leaderboard_entry_scene.instantiate()
 		entries_container.add_child(entry)
