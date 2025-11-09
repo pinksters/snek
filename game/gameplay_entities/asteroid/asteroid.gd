@@ -157,7 +157,7 @@ func split() -> void:
 	for piece_size in split_sizes:
 		var piece: Asteroid = _create_split_piece(piece_size)
 		pieces.append(piece)
-		piece.animate_velocity_after_splitting()
+		piece.animate_velocity_after_splitting.call_deferred()
 	
 	# Emit signal
 	asteroid_split.emit(self, pieces)
@@ -222,7 +222,7 @@ func _create_split_piece(piece_size: int) -> Asteroid:
 	piece.angular_velocity = randf_range(-1, 1)
 
 	# Add to scene
-	add_sibling(piece)
+	add_sibling.call_deferred(piece)
 
 	return piece
 
