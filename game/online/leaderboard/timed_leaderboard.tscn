@@ -1,25 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://1bgp7cs813ul"]
+[gd_scene load_steps=7 format=3 uid="uid://1bgp7cs813ul"]
 
 [ext_resource type="Script" uid="uid://q464efcfof3v" path="res://online/leaderboard/timed_leaderboard.gd" id="1_timed_leaderboard"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
-bg_color = Color(0.1, 0.1, 0.15, 0.9)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg_border"]
+bg_color = Color(0.1, 0.1, 0.15, 0.95)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-border_color = Color(0.5, 0.5, 0.6, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+border_color = Color(0.4, 0.5, 0.7, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress"]
-bg_color = Color(0.2, 0.6, 0.8, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_bg"]
+bg_color = Color(0.15, 0.15, 0.2, 0.6)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="Gradient" id="Gradient_progress"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.15, 0.5, 0.85, 1, 0.25, 0.7, 1, 1, 0.15, 0.5, 0.85, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_progress"]
+gradient = SubResource("Gradient_progress")
+fill = 1
+fill_from = Vector2(0, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_progress"]
+texture = SubResource("GradientTexture2D_progress")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
 
 [node name="TimedLeaderboard" type="PanelContainer"]
 anchors_preset = 15
@@ -27,7 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg_border")
 script = ExtResource("1_timed_leaderboard")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -60,9 +79,12 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Refresh"
 
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+
 [node name="NextRewardContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Header"]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 10
 
 [node name="NextRewardLabel" type="Label" parent="MarginContainer/VBoxContainer/Header/NextRewardContainer"]
 unique_name_in_owner = true
@@ -72,9 +94,10 @@ horizontal_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/Header/NextRewardContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_progress")
+theme_override_styles/background = SubResource("StyleBoxFlat_progress_bg")
+theme_override_styles/fill = SubResource("StyleBoxTexture_progress")
 max_value = 1.0
 value = 0.5
 show_percentage = false
@@ -101,7 +124,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 4
+theme_override_constants/separation = 10
 
 [node name="LoadingLabel" type="Label" parent="MarginContainer/VBoxContainer/ContentContainer"]
 unique_name_in_owner = true

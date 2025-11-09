@@ -18,9 +18,12 @@ const FADE_IN_DURATION = 0.3
 const CELEBRATION_DURATION = 1.5
 const FADE_OUT_DURATION = 0.5
 
-const COLOR_SUBMITTING = Color(0.2, 0.2, 0.3, 0.9)
-const COLOR_SUCCESS = Color(0.1, 0.6, 0.1, 0.9)
-const COLOR_FAILURE = Color(0.6, 0.1, 0.1, 0.9)
+const COLOR_SUBMITTING = Color(0.15, 0.2, 0.35, 0.95)
+const COLOR_SUBMITTING_BORDER = Color(0.3, 0.4, 0.6, 1)
+const COLOR_SUCCESS = Color(0.12, 0.5, 0.12, 0.95)
+const COLOR_SUCCESS_BORDER = Color(0.3, 0.8, 0.3, 1)
+const COLOR_FAILURE = Color(0.5, 0.12, 0.12, 0.95)
+const COLOR_FAILURE_BORDER = Color(0.9, 0.3, 0.3, 1)
 
 
 func _ready() -> void:
@@ -64,27 +67,50 @@ func set_state(state: State) -> void:
 	match state:
 		State.SUBMITTING:
 			label.text = "Submitting score on-chain..."
-			_apply_panel_color(COLOR_SUBMITTING)
+			_apply_panel_style(COLOR_SUBMITTING, COLOR_SUBMITTING_BORDER, false)
 			progress_bar.visible = true
 		State.SUCCESS:
 			label.text = "Score submitted successfully!"
-			_apply_panel_color(COLOR_SUCCESS)
+			_apply_panel_style(COLOR_SUCCESS, COLOR_SUCCESS_BORDER, true)
 			progress_bar.visible = false
 			celebration_timer = 0.0
 		State.FAILURE:
 			label.text = "Score submission failed"
-			_apply_panel_color(COLOR_FAILURE)
+			_apply_panel_style(COLOR_FAILURE, COLOR_FAILURE_BORDER, true)
 			progress_bar.visible = false
 			celebration_timer = 0.0
 
 
-func _apply_panel_color(color: Color) -> void:
+func _apply_panel_style(bg_color: Color, border_color: Color, add_glow: bool) -> void:
 	var style = StyleBoxFlat.new()
-	style.bg_color = color
-	style.corner_radius_top_left = 4
-	style.corner_radius_top_right = 4
-	style.corner_radius_bottom_left = 4
-	style.corner_radius_bottom_right = 4
+	style.bg_color = bg_color
+
+	# Border
+	style.border_width_left = 2
+	style.border_width_top = 2
+	style.border_width_right = 2
+	style.border_width_bottom = 2
+	style.border_color = border_color
+
+	# Rounded corners
+	style.corner_radius_top_left = 8
+	style.corner_radius_top_right = 8
+	style.corner_radius_bottom_left = 8
+	style.corner_radius_bottom_right = 8
+
+	# Shadow for depth
+	style.shadow_size = 6
+	style.shadow_color = Color(0, 0, 0, 0.5)
+	style.shadow_offset = Vector2(0, 3)
+
+	# Add glow effect for success/failure states
+	if add_glow:
+		style.shadow_size = 8
+		var glow_color = border_color
+		glow_color.a = 0.6
+		style.shadow_color = glow_color
+		style.shadow_offset = Vector2(0, 0)
+
 	add_theme_stylebox_override("panel", style)
 
 
