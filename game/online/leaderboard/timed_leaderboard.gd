@@ -6,7 +6,6 @@ class_name TimedLeaderboard
 @export_group("Configuration")
 @export var limit: int = 10
 @export var auto_refresh_on_ready: bool = true
-@export var auto_refresh_interval_sec: float = 30.0
 
 @onready var scroll_container = %ScrollContainer
 @onready var entries_container = %EntriesContainer
@@ -22,27 +21,27 @@ var current_results: Array = []
 var current_period_info: Dictionary = {}
 var leaderboard_entry_scene: PackedScene = preload("res://online/leaderboard/leaderboard_entry.tscn")
 
-var auto_refresh_timer: float = 0.0
 var next_reward_time: float = 0.0
 
 
 func _ready():
 	ScoreServer.current_period_leaderboard_fetched.connect(_on_leaderboard_fetched)
 	ScoreServer.fetch_failed.connect(_on_fetch_failed)
-	
+	ScoreServer.score_submitted.connect(_on_score_submitted)
+
 	refresh_button.pressed.connect(refresh_leaderboard)
 	if auto_refresh_on_ready:
 		refresh_leaderboard()
 
 
 func _process(delta):
-	if auto_refresh_interval_sec > 0:
-		auto_refresh_timer += delta
-		if auto_refresh_timer >= auto_refresh_interval_sec:
-			auto_refresh_timer = 0.0
-			refresh_leaderboard()
-	
 	_update_reward_timer(delta)
+
+
+func _on_score_submitted(success: bool, game_id: int, message: String) -> void:
+	# Refresh leaderboard when player successfully submits a score
+	if success:
+		refresh_leaderboard()
 
 
 func refresh_leaderboard():
