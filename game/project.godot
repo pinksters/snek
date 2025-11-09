@@ -22,7 +22,7 @@ config/icon="uid://umquc7cky2wd"
 Game="*res://autoload/game.gd"
 PolkaGodot="*res://addons/polkagodot/autoload/polkagodot.gd"
 EventBus="*res://autoload/event_bus.gd"
-ScoreServer="*res://autoload/score_server.gd"
+ScoreServer="*res://online/score_server.gd"
 
 [display]
 

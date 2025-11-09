@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvervffoga1s5" path="res://menus/main_menu.gd" id="1_chmv6"]
 [ext_resource type="PackedScene" uid="uid://dlkwj8vqxmfne" path="res://addons/polkagodot/ui/asset_management_button/asset_management_button.tscn" id="2_o5w3e"]
-[ext_resource type="PackedScene" uid="uid://1bgp7cs813ul" path="res://ui/leaderboard/timed_leaderboard.tscn" id="2_oblsv"]
+[ext_resource type="PackedScene" uid="uid://1bgp7cs813ul" path="res://online/leaderboard/timed_leaderboard.tscn" id="2_oblsv"]
 [ext_resource type="PackedScene" uid="uid://cfhdf0o6rdm6e" path="res://addons/polkagodot/ui/wallet_connect_button/wallet_connect_button.tscn" id="3_1x3cv"]
 [ext_resource type="FontFile" uid="uid://cev2glk8b7dwy" path="res://addons/polkagodot/assets/fonts/unbounded.ttf" id="4_rqbgu"]
 

@@ -20,7 +20,7 @@ class_name TimedLeaderboard
 var is_loading: bool = false
 var current_results: Array = []
 var current_period_info: Dictionary = {}
-var leaderboard_entry_scene: PackedScene = preload("res://ui/leaderboard/leaderboard_entry.tscn")
+var leaderboard_entry_scene: PackedScene = preload("res://online/leaderboard/leaderboard_entry.tscn")
 
 var auto_refresh_timer: float = 0.0
 var next_reward_time: float = 0.0

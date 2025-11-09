@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bt3dmve3m5dtr"]
 
-[ext_resource type="Script" uid="uid://b32hwj4i6bqsd" path="res://ui/leaderboard/leaderboard_entry.gd" id="1_entry"]
+[ext_resource type="Script" uid="uid://b32hwj4i6bqsd" path="res://online/leaderboard/leaderboard_entry.gd" id="1_entry"]
 [ext_resource type="PackedScene" uid="uid://bnaucyv43dak0" path="res://player/headwear/headwear.tscn" id="2_mtgow"]
 [ext_resource type="Texture2D" uid="uid://brsxa10bw4kk7" path="res://player/snake_body_sprites/snake_head.png" id="2_rwhak"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://1bgp7cs813ul"]
 
-[ext_resource type="Script" uid="uid://q464efcfof3v" path="res://ui/leaderboard/timed_leaderboard.gd" id="1_timed_leaderboard"]
+[ext_resource type="Script" uid="uid://q464efcfof3v" path="res://online/leaderboard/timed_leaderboard.gd" id="1_timed_leaderboard"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0.1, 0.1, 0.15, 0.9)
