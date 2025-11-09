@@ -22,13 +22,15 @@ func submit_score(play_session: PlaySession) -> void:
 			print("[ScoreServer] Cannot submit score - wallet not connected")
 		score_submitted.emit(false, 0, "Wallet not connected")
 		return
-	
+
 	var player_address = PolkaGodot.get_wallet_address()
 	if player_address.is_empty():
 		if debug_mode:
 			print("[ScoreServer] Cannot submit score - no wallet address")
 		score_submitted.emit(false, 0, "No wallet address")
 		return
+
+	OnlineNotifier.create_score_submission_notification()
 	
 	# Extra metadata can be included here for verification.
 	var metadata: Dictionary = {}
