@@ -23,6 +23,7 @@ Game="*res://autoload/game.gd"
 PolkaGodot="*res://addons/polkagodot/autoload/polkagodot.gd"
 EventBus="*res://autoload/event_bus.gd"
 ScoreServer="*res://online/score_server.gd"
+OnlineNotifier="*res://online/online_notifier/online_notifier.tscn"
 
 [display]
 
@@ -34,6 +35,11 @@ window/stretch/aspect="keep_height"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/polkagodot/plugin.cfg")
+
+[gui]
+
+theme/custom="uid://ch8igmrxvlvkq"
+theme/custom_font="uid://cev2glk8b7dwy"
 
 [input]
 

@@ -151,7 +151,7 @@ func _update_reward_timer(delta: float) -> void:
 	var hours = int(time_remaining / 3600)
 	var minutes = int((time_remaining - hours * 3600) / 60)
 	var seconds = int(time_remaining) % 60
-	next_reward_label.text = "Next reward in: %02d:%02d:%02d" % [hours, minutes, seconds]
+	next_reward_label.text = "Next reward distribution in: %02d:%02d:%02d" % [hours, minutes, seconds]
 
 	# Update progress bar
 	if current_period_info.has("intervalHours"):

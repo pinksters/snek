@@ -58,7 +58,7 @@ vertical_alignment = 1
 [node name="RefreshButton" type="Button" parent="MarginContainer/VBoxContainer/Header/TitleBar"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "🔄 Refresh"
+text = "Refresh"
 
 [node name="NextRewardContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Header"]
 layout_mode = 2
