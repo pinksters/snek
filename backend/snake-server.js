@@ -8,8 +8,8 @@ const cron = require('node-cron');
 const PORT = process.env.PORT || 3002;
 const PINKHAT_SERVER_URL = process.env.PINKHAT_SERVER_URL || 'http://localhost:3003';
 const PINKHAT_ADMIN_KEY = process.env.PINKHAT_ADMIN_KEY;
+const CLIENT_KEY = process.env.CLIENT_KEY;
 
-const CLIENT_KEY = 'one-in-the-pink-two-in-the-stink';  // This must match the CLIENT_KEY in score_server.gd
 const MAX_TIMESTAMP_AGE = 60;                           // Maximum age of submission in seconds
 
 // Reward distribution config
