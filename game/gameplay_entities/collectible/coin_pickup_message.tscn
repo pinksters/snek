@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b1b0e1p7lndau"]
 
 [ext_resource type="Script" uid="uid://ctxmb4nkeexw0" path="res://gameplay_entities/collectible/coin_pickup_message.gd" id="1_script"]
-[ext_resource type="FontFile" uid="uid://cev2glk8b7dwy" path="res://addons/polkagodot/assets/fonts/unbounded.ttf" id="2_font"]
+[ext_resource type="FontFile" uid="uid://d28fopo11k0kg" path="res://addons/polkagodot/assets/fonts/unbounded.ttf" id="2_font"]
 
 [node name="CoinPickupMessage" type="Node2D"]
 script = ExtResource("1_script")

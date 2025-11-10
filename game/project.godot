@@ -39,7 +39,7 @@ enabled=PackedStringArray("res://addons/polkagodot/plugin.cfg")
 [gui]
 
 theme/custom="uid://ch8igmrxvlvkq"
-theme/custom_font="uid://cev2glk8b7dwy"
+theme/custom_font="uid://d28fopo11k0kg"
 
 [input]
 

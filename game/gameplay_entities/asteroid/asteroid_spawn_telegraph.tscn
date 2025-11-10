@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cuqkd7m3qhqc"]
 
-[ext_resource type="Script" path="res://gameplay_entities/asteroid/asteroid_spawn_telegraph.gd" id="1_1"]
+[ext_resource type="Script" uid="uid://dp47r2iwk26d5" path="res://gameplay_entities/asteroid/asteroid_spawn_telegraph.gd" id="1_1"]
 
 [node name="AsteroidSpawnTelegraph" type="Node2D"]
 z_index = 100

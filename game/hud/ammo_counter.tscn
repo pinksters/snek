@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://djjn7n4p7aisg" path="res://hud/ammo_counter.gd" id="1_1"]
 [ext_resource type="FontVariation" uid="uid://hvjn3dv84xvx" path="res://addons/polkagodot/assets/fonts/unbounded_light.tres" id="2_8vvro"]
-[ext_resource type="PackedScene" path="res://hud/ammo_indicator.tscn" id="3_l7dbp"]
+[ext_resource type="PackedScene" uid="uid://i5pmufdexdn2" path="res://hud/ammo_indicator.tscn" id="3_l7dbp"]
 
 [node name="AmmoCounter" type="Control"]
 custom_minimum_size = Vector2(300, 50)

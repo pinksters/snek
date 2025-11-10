@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://d4lgamt2iekcg" path="res://menus/shockwave_transition.gdshader" id="2_ixv5n"]
 [ext_resource type="Texture2D" uid="uid://bqqfooagyjmu2" path="res://assets/space_images/background.png" id="2_s3tb6"]
 [ext_resource type="Texture2D" uid="uid://ckj01f3hv2udm" path="res://assets/space_images/galaxy-1.png" id="3_l6ryk"]
-[ext_resource type="FontFile" uid="uid://cev2glk8b7dwy" path="res://addons/polkagodot/assets/fonts/unbounded.ttf" id="4_font"]
+[ext_resource type="FontFile" uid="uid://d28fopo11k0kg" path="res://addons/polkagodot/assets/fonts/unbounded.ttf" id="4_font"]
 [ext_resource type="Script" uid="uid://5aixtcvr1csc" path="res://utils/spinning_sprite.gd" id="4_vlsje"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6kq20"]
