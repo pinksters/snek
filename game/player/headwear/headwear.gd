@@ -21,6 +21,8 @@ func _ready() -> void:
 		var equipped_hat: NFT = PolkaGodot.equipped_nft
 		if is_instance_valid(equipped_hat):
 			show_hat(equipped_hat.name)
+		else:
+			show_hat("")
 
 
 func show_hat(hat_name: String = "") -> void:
