@@ -17,6 +17,9 @@ func _ready() -> void:
 
 
 func submit_score(play_session: PlaySession) -> void:
+	if play_session.score <= 0:
+		return
+	
 	if not PolkaGodot.is_wallet_connected():
 		if debug_mode:
 			print("[ScoreServer] Cannot submit score - wallet not connected")
