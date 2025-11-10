@@ -5,8 +5,8 @@ const fetch = require('node-fetch');
 const cron = require('node-cron');
 
 // Configuration
-const PORT = process.env.PORT || 3002;
-const PINKHAT_SERVER_URL = process.env.PINKHAT_SERVER_URL || 'http://localhost:3003';
+const PORT = process.env.PORT || 3004;
+const PINKHAT_SERVER_URL = process.env.PINKHAT_SERVER_URL || 'http://localhost:3002';
 const PINKHAT_ADMIN_KEY = process.env.PINKHAT_ADMIN_KEY;
 const CLIENT_KEY = process.env.CLIENT_KEY;
 
@@ -251,19 +251,18 @@ async function distributeRewards() {
             return;
         }
 
-        // Calculate exact cutoff time based on cron schedule (start of current period)
-        const cutoffTime = getPreviousCronTime(REWARD_CRON_SCHEDULE);
-        const hoursSinceCutoff = getHoursSincePreviousCron(REWARD_CRON_SCHEDULE);
+        // Calculate exact cutoff time based on cron schedule (start of previous period)
+        const currentPeriodStart = getPreviousCronTime(REWARD_CRON_SCHEDULE);
+        const cutoffTime = new Date(currentPeriodStart.getTime() - REWARD_INTERVAL_MILLIS);
+        const periodEnd = currentPeriodStart; // End of previous period = start of current period
 
-        // Round up hours to ensure we don't miss any scores
-        // (pinkhat backend uses parseInt which truncates decimals)
-        const queryHours = Math.ceil(hoursSinceCutoff);
+        const queryHours = Math.ceil(REWARD_INTERVAL_HOURS);
 
         // Fetch top scores from pinkhat backend
-        console.log(`   Fetching top ${REWARD_TOP_COUNT} scores from current period...`);
-        console.log(`   Period started: ${cutoffTime.toISOString()}`);
-        console.log(`   Hours elapsed: ${hoursSinceCutoff.toFixed(2)}`);
-        console.log(`   Query hours: ${queryHours} (rounded up to compensate for pinkhat's integer truncation)`);
+        console.log(`   Fetching top ${REWARD_TOP_COUNT} scores from previous period...`);
+        console.log(`   Period: ${cutoffTime.toISOString()} to ${periodEnd.toISOString()}`);
+        console.log(`   Duration: ${REWARD_INTERVAL_HOURS} hours`);
+        console.log(`   Query hours: ${queryHours}`);
 
         const leaderboardUrl = `${PINKHAT_SERVER_URL}/leaderboard/top-scores?limit=${REWARD_TOP_COUNT}&hours=${queryHours}&mode=players`;
         const leaderboardResponse = await fetch(leaderboardUrl);
@@ -277,15 +276,15 @@ async function distributeRewards() {
         let results = leaderboardData.results || [];
 
         // Filter results to only include scores within our exact time period
-        // This ensures we don't include scores that are too old (from the rounded-up query)
+        // This ensures we only include scores from the previous period
         const unfilteredCount = results.length;
         results = results.filter(result => {
             const createdAt = new Date(result.lastGameTime.endsWith('Z') ? result.lastGameTime : result.lastGameTime + 'Z' );
-            return createdAt >= cutoffTime;
+            return createdAt >= cutoffTime && createdAt < periodEnd;
         });
 
         if (unfilteredCount !== results.length) {
-            console.log(`   Filtered out ${unfilteredCount - results.length} score(s) older than cutoff time; original results: ${leaderboardData.results}`);
+            console.log(`   Filtered out ${unfilteredCount - results.length} score(s) outside period window; original results: ${JSON.stringify(leaderboardData.results)}`);
         }
 
         if (results.length === 0) {
@@ -332,7 +331,7 @@ async function distributeRewards() {
             body: JSON.stringify({
                 winners: winners,
                 amounts: amounts,
-                description: `Snake Game - Top ${winners.length} rewards (period: ${cutoffTime.toISOString()} - ${new Date().toISOString()})`
+                description: `Snake Game - Top ${winners.length} rewards (period: ${cutoffTime.toISOString()} - ${periodEnd.toISOString()})`
             })
         });
 
