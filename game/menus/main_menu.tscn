@@ -1,10 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckrtyir2cvkmu"]
+[gd_scene load_steps=13 format=3 uid="uid://ckrtyir2cvkmu"]
 
 [ext_resource type="Script" uid="uid://bvervffoga1s5" path="res://menus/main_menu.gd" id="1_chmv6"]
+[ext_resource type="Texture2D" uid="uid://bqqfooagyjmu2" path="res://assets/space_images/background.png" id="2_bg"]
 [ext_resource type="PackedScene" uid="uid://dlkwj8vqxmfne" path="res://addons/polkagodot/ui/asset_management_button/asset_management_button.tscn" id="2_o5w3e"]
 [ext_resource type="PackedScene" uid="uid://1bgp7cs813ul" path="res://online/leaderboard/timed_leaderboard.tscn" id="2_oblsv"]
 [ext_resource type="PackedScene" uid="uid://cfhdf0o6rdm6e" path="res://addons/polkagodot/ui/wallet_connect_button/wallet_connect_button.tscn" id="3_1x3cv"]
-[ext_resource type="FontFile" uid="uid://cev2glk8b7dwy" path="res://addons/polkagodot/assets/fonts/unbounded.ttf" id="4_rqbgu"]
+[ext_resource type="Texture2D" uid="uid://ckj01f3hv2udm" path="res://assets/space_images/galaxy-1.png" id="3_hswy5"]
+[ext_resource type="FontFile" uid="uid://d28fopo11k0kg" path="res://addons/polkagodot/assets/fonts/unbounded.ttf" id="4_rqbgu"]
+[ext_resource type="Script" uid="uid://5aixtcvr1csc" path="res://utils/spinning_sprite.gd" id="4_vmd75"]
+[ext_resource type="StyleBox" uid="uid://bd0attnepmxwr" path="res://addons/polkagodot/assets/styles/btn_normal.tres" id="7_nc6jr"]
+[ext_resource type="StyleBox" uid="uid://dt0jkrx1d787d" path="res://addons/polkagodot/assets/styles/btn_pressed.tres" id="8_kk4mm"]
+[ext_resource type="StyleBox" uid="uid://2y6gnw44yx4a" path="res://addons/polkagodot/assets/styles/btn_hover.tres" id="9_rx1ud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hswy5"]
+bg_color = Color(0.101960786, 0.101960786, 0.14901961, 0.5529412)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.4, 0.5, 0.7, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -15,19 +35,95 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_chmv6")
 
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CenterAnchor" type="Control" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Nebula" type="Node2D" parent="Background/CenterAnchor"]
+position = Vector2(178, 266)
+rotation = 0.5235988
+scale = Vector2(1, 0.485)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/CenterAnchor/Nebula"]
+position = Vector2(4.392189, -33.798355)
+rotation = -6470.384
+scale = Vector2(1.5833981, 1.5833981)
+texture = ExtResource("3_hswy5")
+script = ExtResource("4_vmd75")
+spin_speed = -0.3
+
+[node name="Nebula2" type="Node2D" parent="Background/CenterAnchor"]
+position = Vector2(440, 82)
+rotation = -3.1415927
+scale = Vector2(1, 0.485)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/CenterAnchor/Nebula2"]
+modulate = Color(0, 0.90518683, 0.7193977, 1)
+position = Vector2(217.71956, 786.27637)
+rotation = -6471.077
+scale = Vector2(0.9342987, 0.9342987)
+texture = ExtResource("3_hswy5")
+script = ExtResource("4_vmd75")
+spin_speed = -0.3
+
+[node name="Nebula3" type="Node2D" parent="Background/CenterAnchor"]
+position = Vector2(577.00006, -25.00003)
+rotation = -1.8325958
+scale = Vector2(1, 0.485)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/CenterAnchor/Nebula3"]
+modulate = Color(1, 0.4862745, 1, 1)
+position = Vector2(-214.91235, 148.09048)
+rotation = -6470.199
+scale = Vector2(0.8372296, 0.8372296)
+texture = ExtResource("3_hswy5")
+script = ExtResource("4_vmd75")
+spin_speed = -0.3
+
 [node name="TimedLeaderboard" parent="." instance=ExtResource("2_oblsv")]
 layout_mode = 1
 anchors_preset = 9
 anchor_right = 0.0
 offset_right = 625.0
 grow_horizontal = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_hswy5")
 
 [node name="PlayButton" type="Button" parent="."]
+modulate = Color(0.91764706, 0.6039216, 1, 0.8352941)
 layout_mode = 0
-offset_left = 824.0
-offset_top = 410.0
-offset_right = 1073.0
-offset_bottom = 526.0
+offset_left = 792.0
+offset_top = 476.0
+offset_right = 1113.0
+offset_bottom = 592.0
+focus_mode = 0
+theme_override_colors/font_outline_color = Color(2.1658838e-07, 0.27623314, 0.27623317, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_rqbgu")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("7_nc6jr")
+theme_override_styles/pressed = ExtResource("8_kk4mm")
+theme_override_styles/hover = ExtResource("9_rx1ud")
 text = "PLAY"
 
 [node name="AssetManagementButton" parent="." instance=ExtResource("2_o5w3e")]
