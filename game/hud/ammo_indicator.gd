@@ -22,6 +22,6 @@ func _update_visual() -> void:
 	if fill_amount >= 1.0:
 		progress_bar.modulate = Color(1.0, 1.0, 1.0, 1.0)  # Full brightness when fully filled
 	elif fill_amount > 0.0:
-		progress_bar.modulate = Color(0.7, 0.7, 0.7, 0.9)  # Dimmed while charging
+		progress_bar.modulate = Color(0.7, 0.7, 0.7, 0.35)  # Dimmed while charging
 	else:
-		progress_bar.modulate = Color(0.5, 0.5, 0.5, 0.7)  # Very dim when empty
+		progress_bar.modulate = Color(0.5, 0.5, 0.5, 0.1)  # Very dim when empty

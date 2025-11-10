@@ -1,11 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://i5pmufdexdn2"]
+[gd_scene load_steps=4 format=3 uid="uid://i5pmufdexdn2"]
 
 [ext_resource type="Script" uid="uid://b8btlwgw5n1rx" path="res://hud/ammo_indicator.gd" id="1_1"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ka5v"]
+bg_color = Color(0, 0, 0, 0.5058824)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.1685335, 1.994418e-05, 0.16853207, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufekm"]
+bg_color = Color(0.99409276, 0.6121468, 0.98061997, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.79615825, 0.00177795, 0.9468785, 0.7058824)
+shadow_size = 5
+
 [node name="AmmoIndicator" type="Control"]
-custom_minimum_size = Vector2(60, 20)
+custom_minimum_size = Vector2(40, 60)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 20.0
+offset_bottom = 60.0
 script = ExtResource("1_1")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
@@ -15,5 +43,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_8ka5v")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ufekm")
 max_value = 1.0
+fill_mode = 3
 show_percentage = false

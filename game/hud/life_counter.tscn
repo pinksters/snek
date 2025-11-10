@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccd56btd2vu5k"]
+[gd_scene load_steps=6 format=3 uid="uid://ccd56btd2vu5k"]
 
 [ext_resource type="Script" uid="uid://bpia5dkhtggjy" path="res://hud/life_counter.gd" id="1_7512a"]
 [ext_resource type="Texture2D" uid="uid://brsxa10bw4kk7" path="res://player/snake_body_sprites/snake_head.png" id="1_cen5y"]
+[ext_resource type="Shader" uid="uid://1kmewg4thb17" path="res://shaders/outline.gdshader" id="2_0em8b"]
 [ext_resource type="PackedScene" uid="uid://bnaucyv43dak0" path="res://player/headwear/headwear.tscn" id="3_krshm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7rtbb"]
+shader = ExtResource("2_0em8b")
+shader_parameter/outline_color = Color(0, 1, 0, 1)
+shader_parameter/sprite_tint = Color(1, 0.38039216, 1, 1)
+shader_parameter/outline_thickness = 5.0000002375
 
 [node name="LifeCounter" type="Control"]
 custom_minimum_size = Vector2(100, 100)
@@ -21,6 +28,7 @@ offset_bottom = 40.0
 
 [node name="LifeIndicator1" type="TextureRect" parent="HBoxContainer"]
 self_modulate = Color(1, 0.49411765, 1, 1)
+material = SubResource("ShaderMaterial_7rtbb")
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture = ExtResource("1_cen5y")
@@ -32,6 +40,7 @@ scale = Vector2(0.43305227, 0.43305227)
 
 [node name="LifeIndicator2" type="TextureRect" parent="HBoxContainer"]
 self_modulate = Color(1, 0.49411765, 1, 1)
+material = SubResource("ShaderMaterial_7rtbb")
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture = ExtResource("1_cen5y")
@@ -43,6 +52,7 @@ scale = Vector2(0.43305227, 0.43305227)
 
 [node name="LifeIndicator3" type="TextureRect" parent="HBoxContainer"]
 self_modulate = Color(1, 0.49411765, 1, 1)
+material = SubResource("ShaderMaterial_7rtbb")
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture = ExtResource("1_cen5y")
